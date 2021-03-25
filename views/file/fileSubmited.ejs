@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/homestudent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                  <li><a href="/account/indexStudent">Home</a></li>
+                    <li id="popupdk">Uploadfile</li>
+                    <li><a href="/file/fileSubmited" >File Submited</a></li>
+                </ul>
+
+            </div>
+            <div class="content">
+              <<h1>Summit files:</h1>
+              <p id = "del" style="color: #FFF;">Deadline for edit: (yy-mm-dd hh:mm)</p>
+              <h1> bài đã Pass 1st dead line</h1>
+              <table class="table">
+                
+              <tr>
+                  <th>First submit</th>
+                  <th>Status</th>
+                  <th>Comment</th>
+                  <th>Update</th>
+              </tr>
+              <% data.forEach(function(data) { %>
+                <tr>
+                    <%if (data.status =="Pass") { %>
+                    <td>                        
+                      <a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+                      <%if (data.filePathAnh) { %>
+                        <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                      <% }  %> 
+                    </td>
+                    
+                    <td><%= data.status %></td>
+                    <td><%= data.comment %></td>
+                    <td><p>Cant update file</p></td>
+                    <% }  %>
+                </tr>
+              <% }); %>
+              </table>  
+              <h1>  Update file </h1>
+              <table class="table">
+                
+                <tr>
+                    <th>First submit</th>
+                    <!-- <th>Status</th> -->
+                    <th>Update edition</th>
+                    <th>Satus</th>
+                    <th>Comment</th>
+                    <th>Update</th>
+                </tr>
+                <% data.forEach(function(data) { %>
+                  <tr>
+                      <%if (data.status =="not rate" && data.nameFile2 && data.status2 =="Pass") { %>
+                      <td><a href="/download/<%= data._id %>"><%= data.nameFile %></a> 
+                        <%if (data.filePathAnh) { %>
+                          <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                        <% }  %>  
+                      </td>
+                      <!-- <td><%= data.status %></td> -->
+                      <td><a href="/download2/<%= data._id %>"><%= data.nameFile2 %> 
+                        <%if (data.filePathAnh2) { %>
+                          <img src="/<%= data.filePathAnh2 %>" width="40px" height="40px"/>
+                        <% }  %>  
+                      </td>
+
+                      <td><%= data.status2 %></td>
+                      <td><%= data.comment2 %></td>
+                      <td>Cant update file</td>
+                      <% }  %>
+                  </tr>   
+                <% }); %>
+                <!-- <th> bài 2nd đang chờ phê duyệt </th> -->
+          
+                <% data.forEach(function(data) { %>
+                  <tr>
+                      <%if (data.status =="not rate" && data.nameFile2 && data.status2 =="not rate") { %>
+                      <td><a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+                        <%if (data.filePathAnh) { %>
+                          <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                        <% }  %>                        </td>
+                      <!-- <td><%= data.status %></td> -->
+                      <td><a href="/download2/<%= data._id %>"><%= data.nameFile2 %>   
+                        <%if (data.filePathAnh2) { %>
+                          <img src="/<%= data.filePathAnh2 %>" width="40px" height="40px"/>
+                        <% }  %>                        </td>
+
+                      <td><%= data.status2 %></td>
+                      <td><%= data.comment2 %></td>
+
+                      <td>
+                        <form  class="form-container" action="/file/upload2" method="POST" enctype="multipart/form-data" >
+                          <div class="form-group" style="margin-left: 10px;">
+                              <input type = "hidden" value="<%= data._id %>" name = "idfile">
+                              <input type="file" class="form-control-file" name="filePath" multiple="multiple" id="filePath" required>
+                              <input class="form-control-file" type="submit" value="upload file">
+                          </div>
+                        </form>
+                      </td>
+                      <% }  %>
+                  </tr> 
+                <% }); %>
+                <!-- <th>Bài chưa nộp 2nd</th> -->
+                <% data.forEach(function(data) { %>
+                  <tr>
+                      <%if (data.status =="not rate" &&! data.nameFile2) { %>
+                        <td><a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+                          <%if (data.filePathAnh) { %>
+                            <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                          <% }  %>  
+                        </td>
+                        <!-- <td><%= data.status %></td> -->
+                        <td><a href="/download2/<%= data._id %>"><%= data.nameFile2 %>
+                          <%if (data.filePathAnh2) { %>
+                            <img src="/<%= data.filePathAnh2 %>" width="40px" height="40px"/>
+                          <% }  %>  
+                        </td>
+                      <!-- <td><%= data.status2 %></td> -->
+                      <td></td>
+                        <td><%= data.comment2 %></td>
+
+                        <td>
+                          <form  class="form-container" action="/file/upload2" method="POST" enctype="multipart/form-data" >
+                            <div class="form-group" style="margin-left: 10px;">
+                                <input type = "hidden" value="<%= data._id %>" name = "idfile">
+                                <input type="file" class="form-control-file" name="filePath" multiple="multiple" id="filePath" required>
+                                <input class="form-control-file" type="submit" value="upload file">
+                            </div>
+                          </form>
+                        </td>
+                        <% }  %>
+                    </tr> 
+                  <% }); %>
+            </table>
+          
+      </div>
+      </div>
+  </div>
+    
+    <div class="footer">
+        <p>@University-2021</p>
+        <p id = 'deadline' style="display: none;">{{deadline}}</p>
+    </div>
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <iframe src="../uploads/dieukhoan.txt" class="dk"></iframe>
+  <br>
+  <p>bạn có đồng ý với các điều khoản trên không?</p>
+  <input type="radio" id="male" name="gender" value="Yes"> <label for="male">Yes</label>
+  <input type="radio" id="female" name="gender" value="No"> <label for="female">No</label><br><br>
+   <input type = "submit" id="btn1" value="Next">
+  <script language="javascript">
+    var allcookies = decodeURIComponent(document.cookie);
+        cookiearray = allcookies.split(';');
+               for(var i=0; i<cookiearray.length; i++){
+                 if(cookiearray[i].split('=')[0] =="deadline"){
+                    dealine = cookiearray[i].split('=')[1];
+                    document.getElementById("del").innerHTML = "Deadline for update file:" + dealine + "(yy-mm-dd hh:mm)";
+                    break;
+                 }
+               } 
+      document.getElementById("btn1").onclick = function ()
+      {
+        let ts = Date.now();
+        let date_ob = new Date(ts);
+        let date = date_ob.getDate().toString().padStart(2, "0");;
+        let month = (date_ob.getMonth() + 1).toString().padStart(2, "0");
+        let hour = date_ob.getHours().toString().padStart(2, "0");;
+        let minutes = date_ob.getMinutes().toString().padStart(2, "0");;
+        let year = date_ob.getFullYear();
+        dl = year + "-" + month + "-" + date + " " + hour + ":" + minutes;
+      
+        var allcookies = decodeURIComponent(document.cookie);
+        cookiearray = allcookies.split(';');
+               for(var i=0; i<cookiearray.length; i++){
+                 if(cookiearray[i].split('=')[0] =="deadline"){
+                    var dealine = cookiearray[i].split('=')[1];
+                    if(dl <dealine){
+        var checkbox = document.getElementsByName("gender");
+          for (var i = 0; i < checkbox.length; i++){
+            if (checkbox[i].checked === true){
+              if(checkbox[i].value ==='No'){
+                alert("bạn phải đồng ý mới được tiếp tục")
+              }else{
+                  location.href = "/file"
+              }
+            }
+          }
+        }else{
+          alert("Hết hạn nộp 1st")
+        }                         break;
+                 }
+               } 
+     
+    };
+  </script>
+      </div>
+    
+    </div>
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+   
+    // Get the button that opens the modal
+    var btn = document.getElementById("popupdk");  
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href ="/account/indexGuest">Home</a></li>
+                </ul>
+
+            </div>
+        
+            <div class="content">
+                <h1>Student contributions</h1>
+                <table class="table">
+                  <tr class="table1">
+                <th>Name</th>
+    <th>Email</th>
+    <th>Post reviews</th>
+    {{#each data}}
+                  </tr>
+
+        <tr>
+            <td>
+                <a href="/download/{{_id}}">{{nameFile}}</a>                
+            </td>
+            <td>                <p>{{studentemail}}</p>
+</td>
+
+            <td>
+                <a href="/guest/danhgiabaibao{{_id}}">View</a>
+            </td>
+        </tr>
+        {{/each}}
+            {{#each data2}}
+                  </tr>
+
+        <tr>
+            <td>
+                <a href="/download2/{{_id}}">{{nameFile2}}</a>                
+            </td>
+            <td>                <p>{{studentemail}}</p>
+</td>
+
+            <td>
+                <a href="/guest/danhgiabaibao{{_id}}">View</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+                
+  
+      </div>
+      </div>
+  </div>
+    
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+{{!-- <% data.forEach(function(data) { %>
+    <tr>
+        <%if (data.status =="Pass" &&! data.nameFile2) { %>
+            <p>bạn có thể dowload file tại đây<a href="/download/<%= data._id %>"><%= data.nameFile %></a></p>
+            <iframe src="/<%= data.filePath %>" height="100%" width ="100%"></iframe>
+          <% }  %>
+        
+          <%if (data.status2 =="Pass" && data.nameFile2) { %>
+            <p>bạn có thể dowload file tại đây<a href="/download2/<%= data._id %>"><%= data.nameFile2 %></a></p>
+            <iframe src="/<%= data.filePath2 %>" height="100%" width ="100%"></iframe>
+          <% }  %>
+      </tr> 
+<% }); %> --}}
+
+

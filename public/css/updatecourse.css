@@ -1,0 +1,14 @@
+form h2{
+    color: #fff;
+    margin: 20px auto auto auto;
+}
+
+form label{
+    color: #fff;
+}
+.form-group{
+    margin: 50px auto 20px auto;
+}
+.form-group .topic{
+    margin-left: 55px;
+}

@@ -1,0 +1,23 @@
+<!-- <iframe src = "https://drive.google.com/file/d/1HeMFnRmPmNaSzySRzbHW9Sdq5NgtD6es/view" width="50%" height="400"></iframe> -->
+<iframe src="../uploads/dieukhoan.txt" width="640" height="480"></iframe>
+<br>
+<p>bạn có đồng ý với các điều khoản trên không?</p>
+<input type="radio" id="male" name="gender" value="Yes"> <label for="male">Yes</label>
+<input type="radio" id="female" name="gender" value="No"> <label for="female">No</label><br>
+<a href ="/home">Back</a> <input type = "submit" id="btn1" value="next">
+<script language="javascript">
+ 
+    document.getElementById("btn1").onclick = function ()
+    {
+        var checkbox = document.getElementsByName("gender");
+        for (var i = 0; i < checkbox.length; i++){
+            if (checkbox[i].checked === true){
+                if(checkbox[i].value ==='No'){
+                    alert("bạn phải đồng ý mới được tiếp tục")
+                }else{
+                    location.href = "/file"
+                }
+            }
+        }
+    };
+</script>

@@ -1,0 +1,31 @@
+.content h2{
+    color: #fff;
+    margin-top: 5%;
+    font-size: 30px;
+}
+form{
+    margin-top: 5%;
+}
+form label{
+    color: #fff;
+}
+.form-group{
+    margin-top: 1%;
+}
+.form-group .inputemail{
+    margin-left: 5%;
+}
+.form-group .inputtopic{
+    margin-left: 4%;
+
+}
+.buttonupdate{
+    width: 70px;
+    height: 30px;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+.buttonupdate:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

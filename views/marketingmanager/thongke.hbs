@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/homeadmin.css">
+    <link rel="stylesheet" href="/css/homestudent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+       
+<!-- Downloaded chart.css -->
+<link rel="stylesheet" href="chart.css">
+
+<!-- RawGit CDN chart.css -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href="/account/indexManager" >Home</a></li>
+                    <li><a href="/manage/allfaculity">View contributions</a></li>
+                    <li><a href="/manage/allcoursemanager">Dowload contributions</a></li>
+                    <li id="popupsettime">Set Time</li>
+                </ul>
+
+            </div>
+            <div class="content">
+                
+  {{#each data}}
+    <table>
+      <td>
+        <canvas id="bar-chart-grouped" width="400" height="400"></canvas>
+      </td>
+    
+      <td>
+          <canvas id="bar-chart-grouped2" width="400" height="400"></canvas>
+      </td>
+    </table>
+
+
+
+ <script>
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["2021"],
+      datasets: [
+        {
+          label: "tongbaidanop",
+          backgroundColor: "#3e95cd",
+          data: [{{tongbaidanop}},0]
+        }, {
+          label: "sobaidapass",
+          backgroundColor: "#8e5ea2",
+          data: [{{sobaidapass}},0]
+        }, {
+          label: "Tỉ lệ pass bài",
+          backgroundColor: "red",
+          data: [ {{sobaidapass}}/{{tongbaidanop}}*100,0]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Biểu thị số bài nộp và thông qua'
+      }
+    }
+});
+
+
+new Chart(document.getElementById("bar-chart-grouped2"), {
+    type: 'bar',
+    data: {
+      labels: ["1900"],
+      datasets: [
+        {
+          label: "hocsinhcuakhoa",
+          backgroundColor: "#3e95cd",
+          data: [{{hocsinhcuakhoa}},0]
+        }, {
+          label: "soHocsinhnopbai",
+          backgroundColor: "#8e5ea2",
+          data: [{{soHocsinhnopbai}},0]
+        }, {
+          label: "Tỉ lệ học sinh nộp bài",
+          backgroundColor: "red",
+          data: [ {{soHocsinhnopbai}}/{{hocsinhcuakhoa}}*100,0]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Biểu đồ biểu thị số học sinh của khoa và số học sinh nộp bài'
+      }
+    }
+});
+    </script>            
+    {{/each}}
+      </div>
+        </div>
+  </div>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> cài đặt hạn nộp bài cho toàn bộ học sinh</p>
+<form action="/set" method="POST">
+<input type="date" name="date">
+<input type="time" name="time">
+<input type="submit" id="btnUpdate2" >
+</form>
+    </div>
+  
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+ 
+  // Get the button that opens the modal
+  var btn = document.getElementById("popupsettime");
+
+  var btn2 = document.getElementById("btnUpdate2");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  btn2.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+    
+            </div>
+
+        </div>
+      </div>
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+
+     
+</body>
+</html>
+
+
+
+
+
+
+
+

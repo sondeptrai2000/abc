@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/createstudent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+            <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+        </form>
+      
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href="/account/indexAdmin">Home</a></li>
+                    <li><a href="/manage/addManager">Create manager</a></li>
+                </ul>
+
+            </div>
+            <div class="content">
+                 <h2>Add Manager</h2>
+  <form class="d-flex" method="post" action="/manage/doAddManager">
+                <label for="coursename" >user name</label>
+                <input type="text" name="username"  ><br>
+
+                <label for="topic" >email</label>
+                <input type="text" name="email" class="emailinput" ><br>
+
+                <label for="topic" >password</label>
+                <input type="text" name="password" class="pwinput" ><br>
+            <button type="submit" class="btnsubmit">Submit</button>
+    </div>
+  </form>
+            </div>
+
+            </div>
+                
+  
+    
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+

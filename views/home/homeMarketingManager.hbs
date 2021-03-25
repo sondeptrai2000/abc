@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/homemanage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href="/account/indexManager" >Home</a></li>
+                    <li><a href="/manage/allfaculity">View contributions</a></li>
+                    <li><a href="/manage/allcoursemanager">Dowload contributions</a></li>
+                    <li id="popupsettime">Set Time</li>
+                </ul>
+
+            </div>
+            <div class="content">
+                
+  <h1>Personal information</h1>
+  
+  <table class="table">
+      <tr>
+        <th>Username</th>
+        <td>{{account.username}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+         <td>{{account.email}}</td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+         <td>Phone</td>
+      </tr>
+      <tr>
+        <th>Birthday</th>
+         <td>Birthday</td>
+      </tr>
+      <tr>
+        <th>Address</th>
+         <td>Address</td>
+      </tr>
+  </table>
+      </div>
+        </div>
+  </div>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> Set deadlines for all students</p>
+<form action="/manage/settime" method="POST">
+<input type="date" name="date">
+<input type="time" name="time"><br>
+<input type="submit" id="btnUpdate2" value="Submit">
+</form>
+    </div>
+  
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+ 
+  // Get the button that opens the modal
+  var btn = document.getElementById("popupsettime");
+
+  var btn2 = document.getElementById("btnUpdate2");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  btn2.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+    
+            </div>
+
+        </div>
+      </div>
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+
+     
+</body>
+</html>
+
+
+
+
+
+

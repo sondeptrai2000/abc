@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                  <li><a href="/account/indexTeacher">Home</a></li>
+                    <li>  <a href="/course/view{{account.slug}}">View submissions</a></li>
+                </ul>
+
+            </div>
+            <div class="content">
+              <h1>File submit</h1>
+                
+              <table class="table">
+                <thead>
+                        
+              
+                <tr>
+                  <th>Files :</th>
+                  <th>Status :</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              
+                <tbody>
+                  <% file.forEach(function(file) { %>
+                    <tr>
+                        <%if (file.status =="Pass") { %>
+                        <td><a href="/download/<%= file._id %>"><%= file.nameFile %></a></td>
+                        <td><%= file.status %></td>
+                        <td><a href="/course/evaluate/<%= file._id %>">đánh giá</a></td>
+                        <% }  %>
+                    </tr>
+                  <% }); %>
+                  <% file.forEach(function(file) { %>
+                    <tr>
+                        <%if (file.status2 =="Pass") { %>
+                        <td><a href="/download/<%= file._id %>"><%= file.nameFile2 %></a></td>
+                        <td><%= file.status2 %></td>
+                        <td><a href="/course/evaluate2nd/<%= file._id %>">đánh giá</a></td>
+                        <% }  %>
+                    </tr>
+                  <% }); %>
+
+                  <% file.forEach(function(file) { %>
+                    <tr>
+                        <%if ((file.status =="not rate" && !file.nameFile2)||file.status =="Fail" && !file.nameFile2) { %>
+                        <td><a href="/download/<%= file._id %>"><%= file.nameFile %></a></td>
+                        <td><%= file.status %></td>
+                        <td><a href="/course/evaluate/<%= file._id %>">đánh giá</a></td>
+                        <% }  %>
+                    </tr>
+                  <% }); %>
+                 
+              
+                  <% file.forEach(function(file) { %>
+                    <tr>
+                        <%if ((file.status2 =="not rate" && file.nameFile2)||(file.status2 =="Fail" && file.nameFile2)) { %>
+                        <td><a href="/download/<%= file._id %>"><%= file.nameFile2 %></a></td>
+                        <td><%= file.status2 %></td>
+                        <td><a href="/course/evaluate2nd/<%= file._id %>">đánh giá</a></td>
+                        <% }  %>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>  
+      </div>
+      </div>
+  </div>
+    
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+    
+</body>
+</html>
+
+

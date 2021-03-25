@@ -1,0 +1,92 @@
+/*------------------------------------
+  Messages
+------------------------------------*/
+@media (max-width: 768px) {
+  .menu ul{
+    margin-top: 0vh;
+    height: 86vh;
+  }
+}
+.messages-box {
+  max-height: 700px;
+  overflow: auto;
+}
+
+.online-circle {
+  border-radius: 5rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.messages-title {
+  float: right;
+  margin: 0px 5px;
+}
+
+.message-img {
+  float: right;
+  margin: 0px 5px;
+}
+
+.message-header {
+  text-align: right;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.messages-p{
+  max-width: 18rem;
+  
+}
+.text-editor {
+  min-height: 18rem;
+  
+}
+
+.messages-list li.messages-you .messages-title {
+  float: left;
+}
+
+.messages-list li.messages-you .message-img {
+  float: left;
+}
+
+.messages-list li.messages-you p {
+  float: left;
+  text-align: left;
+}
+
+.messages-list li.messages-you .message-header {
+  text-align: left;
+}
+.messages-list li.messages-you a:hover {
+  color: blue;
+}
+.messages-list li p {
+  max-width: 60%;
+  padding: 5px;
+  border: #e6e7e9 1px solid;
+}
+
+.messages-list li.messages-me p {
+  float: right;
+}
+.ql-editor p {
+  font-size: 1rem;
+}
+.image_file_me{
+  width: 70%;
+  height: 70%;
+  float: right;
+  margin: 5px;
+ 
+}
+.image_file_me img,video{
+  max-width: 60%;
+  max-height: 60%;
+  float: right;
+}
+
+.text-muted{
+  font-size: 15px;
+}

@@ -1,0 +1,135 @@
+<script>
+
+  var element = document.getElementById("message-box-12");
+  var form = document.getElementById("send_message");
+  var input = document.getElementById("text_value");
+  
+  
+  var container1 = document.getElementById("container_mes_1");
+  // var input_file = document.getElementById("image_input");
+
+  form.addEventListener("input",(e)=>{
+    // event typing
+    socket.emit("typing",{
+      cookiesemail: "<%=cookiesemail.email%>",
+      User: "<%=user.email%>"
+    });
+  });
+  //listen event typing 
+
+    // event check seen
+  // 
+  // send message
+  form.addEventListener("submit", e => {
+      var message = input.value;
+      if( message == ""){
+        e.preventDefault();
+      }
+    if (message != "") {
+         var mes = input.value;
+         e.preventDefault();
+         socket.emit("client_send_mes", {
+         mes: mes,
+         cookiesemail: "<%=cookiesemail.email%>",
+         User: "<%=user.email%>",
+         file_name: ""
+      });
+      // check link text
+      var index = mes.indexOf("https://");
+      if (index != -1) {
+        var url = mes.slice(index, mes.length);
+        var mess = mes.slice(0, index);
+      }
+      // append message in user-send's boxchat 
+      var param = document.createElement("li");
+      param.setAttribute("class", "messages-me clearfix");
+      if (index == -1) {
+        param.innerHTML = `<div class="message-body clearfix">                               
+                                  <div class="message-header" style="height: 39px;">
+                                    <small class="time-messages text-muted">
+                                          <span class="fas fa-time"></span>${new Date().getHours()}:${new Date().getMinutes()}-${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}
+                                      </small>                                 
+                                  </div>
+                           </div>
+                           <p class="messages-p" style="border-radius: 14px 14px 0px 14px; background-color:#1877F2; color: white;">${mes}</p> `;
+      } else {
+        //link-text
+        $.ajax({
+          url:"http://localhost:3000/send_message/link_text",
+          type:"POST",
+          dataType:"json",
+          data:{
+            link:url,
+            mess:mess
+          },
+          success:(kq)=>{
+            param.innerHTML= ` <div class="message-body clearfix" >
+                                  <div class="message-header" style="height: 39px;">
+                                    <small class="time-messages text-muted">
+                                          <span class="fas fa-time"></span>${new Date().getHours()}:${new Date().getMinutes()}-${new Date().getDate()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}
+                                      </small>                                 
+                                  </div>
+                                  <p class="messages-p" style="background-color: #1877F2; border-radius: 14px; ">${kq.mess}
+                                    <a href="${url}" target="_blank" style="color:black; text-decoration:underline black ;padding:8px" >${url}<br/>
+                                      <img src="${kq.preview.image}"  alt="" style="max-height: 200px; min-width:100%; border-radius:10px" class="img-fluid">
+                                      <br/>
+                                    </a>
+                                    ${kq.preview.title}
+                                  </p>
+                               </div> `
+          }
+        });
+      }
+      container1.appendChild(param);
+      element.scrollTop = element.scrollHeight+100;
+      document.getElementById("text_value").value = "";
+    }
+    // check file type
+    
+    
+  });
+  // // listen event server send text
+  socket.on("server_send_mes", data => {
+    // event check seen
+    socket.emit("check-seen",{
+      cookiesemail: "<%=cookiesemail.email%>",
+      User: "<%=user.email%>"
+    });
+    // check link text
+    var mes = data.message;
+    var index = mes.indexOf("https://");
+    if (index != -1) {
+      var url = mes.slice(index, mes.length);
+      var mess = mes.slice(0, index);
+    }
+    var param = document.createElement("li");
+    param.setAttribute("class", "messages-you clearfix");
+    if (data.link == 0) {
+      param.innerHTML = ` <div class="message-body clearfix">                              
+                                  <div class="message-header" style="height: 39px;">
+                                      <p class="messages-title"  width="35" height="35"><%=user.email%></p> 
+                                  </div>
+                                  <p class="messages-p" style="background-color: #F2F3F5; border-radius: 14px;">
+                                        ${data.message}
+                                  </p>
+                          </div> `
+    } else 
+    {
+      param.innerHTML = ` <div class="message-body clearfix">
+                                  <div class="message-header" style="height: 39px;">
+                                      <p class="messages-title"
+                                         width="35" height="35"><%=user.email%></p> 
+                                  </div>
+                                  <p class="messages-p" style="background-color: #F2F3F5; border-radius: 14px;">${mess}
+                                    <a href="${url}" target="_blank" style="color:black; text-decoration:underline black ;padding:8px" >${url}<br/>
+                                      <img src="${data.link.image}" alt="" class="img-fluid" style="max-height: 200px; min-width:100%;border-radius: 10px;" >
+                                      <br/>
+                                    </a>
+                                    ${data.link.title}
+                                  </p>
+                          </div> `
+    }
+    container1.appendChild(param);
+    element.scrollTop = element.scrollHeight;
+  })                         
+</script>

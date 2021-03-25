@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  {{#each data}}
+    <form action="/course/dodanhgiabaibao{{_id}}" method="POST">
+    <tbody>
+        <tr>
+        <th>
+            <p>bạn có thể dowload file tại đây<a href="/download/{{_id}}"> {{nameFile}}</a></p>
+            <iframe src="/{{filePath}}" height="1000px" width ="100%"></iframe>
+        </th>
+    </tbody>
+    </form>
+{{/each}}
+
+     
+</body>
+</html>
+
+
+
+

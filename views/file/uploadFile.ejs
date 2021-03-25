@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/homestudent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                  <li><a href="/account/indexStudent">Home</a></li>
+                    <li> <a href="#">Uploadfile</a></li>
+                    <li><a href="/file/fileSubmited" >File Submited</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <h1>Uploadfile:</h1>
+                <form class="mt-4 ml-3" action="/file/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group" style="margin-left: 10px; color:#fff">
+            <label for="exampleFormControlFile1">Files input</label>
+            <input type="file" class="form-control-file" name="filePath" multiple="multiple" id="filePath" required>
+            <input class="form-control-file" type="submit" value="upload file">
+        </div>
+    </form>
+
+   
+
+    <table class="table">
+
+        <tr>
+            <th scope="col" style="font-size:20px;">File summited:</th>
+        </tr>
+
+        <% data.forEach(function(data) { %>
+          <tr>
+              <%if (data.filePathAnh) { %>
+              <td>
+                <a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+              <img width="40px" height="40px" src="<%= data.filePathAnh %>"/>
+              </td>
+              <td><%= data.status %></td>
+              <% }  %>
+          </tr>   
+        <% }); %>
+
+        <% data.forEach(function(data) { %>
+          <tr>
+              <%if (!data.filePathAnh) { %>
+              <td><a href="/download/<%= data._id %>"><%= data.nameFile %></a></td>
+              <td><%= data.status %></td>
+              <% }  %>
+          </tr>   
+        <% }); %>
+
+
+        
+    <!-- {{#each data}}
+    
+    <tbody>
+        <tr>
+        <th>
+            <a>
+              <img width="50px" height="20px" src="{{filePathAnh}}"/>
+            </a>
+        </th>
+        </tr>
+        {{/each}} -->
+    </table>
+ 
+      </div>
+      </div>
+  </div>
+    
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+
+</body>
+</html>
+
+

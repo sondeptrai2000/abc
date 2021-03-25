@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/allcoursemanage.css">
+    <link rel="stylesheet" href="/css/homemanage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.checkbtn').click(function(){
+          $('ul').toggleClass('show');
+        });
+      });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+        <form method="post" action="./course/search">
+            <input placeholder="Search" aria-label="Search" name="coursename" class="search">
+            <button type="submit" value="Search Course" class="buttonsearch">Search</button>
+            <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars" ></i>
+        </label>
+      <span class="logout">&times;</span>
+        </form>
+      
+
+    </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href="/account/indexManager" >Home</a></li>
+                    <li><a href="/manage/allfaculity">View contributions</a></li>
+                    <li><a href="/manage/allcoursemanager">Dowload contributions</a></li>
+                    <li id="popupsettime">Set Time</li>
+                </ul>
+
+            </div>
+            <div class="content">
+            {{#each course}}  
+                <div class="card" >   
+                        <h5>{{coursename}}</h5>
+                                <h5>{{slug}}</h5>
+                                
+
+                         <button><a href="/file/lol{{slug}}">View</a</button>
+                </div>
+            {{/each}}   
+            </div>
+
+            </div>           
+   <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> Set deadlines for all students</p>
+<form action="/manage/settime" method="POST">
+<input type="date" name="date">
+<input type="time" name="time"><br>
+<input type="submit" id="btnUpdate2" value="Submit">
+</form>
+    </div>
+   </div>
+
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+ 
+  // Get the button that opens the modal
+  var btn = document.getElementById("popupsettime");
+
+  var btn2 = document.getElementById("btnUpdate2");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  btn2.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+    
+    <div class="footer">
+        <p>@University-2021</p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+

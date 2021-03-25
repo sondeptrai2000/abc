@@ -1,0 +1,19 @@
+.content1{
+    width: 50%;
+    height: 100%;
+    text-align: left;
+    margin: auto;
+
+}
+form label{
+    color: #fff;
+}
+#btn{
+    width: 90px;
+    height: 40px;
+    border-radius: 10px;
+}
+#btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

@@ -1,0 +1,33 @@
+.content h2{
+    color: #fff;
+    font-size: 30px;
+    margin: 5% auto 5% auto;
+}
+
+form label{
+    color: #fff;
+}
+form label, input{
+    margin-top: 1%;
+}
+
+.classop{
+    width: 172px;
+    margin-left: 3%;
+}
+.emailinput{
+    margin-left: 2.8%;
+}
+.pwinput{
+    margin-left: 0.5%;
+}
+.btnsubmit{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 1%;
+}
+.btnsubmit:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

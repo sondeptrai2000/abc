@@ -1,0 +1,14 @@
+1.	The University has a Marketing Manager to oversee the process.
+2.	All Faculties have a Marketing Coordinator who is responsible for managing the process for their Faculty.
+3.	All students have the opportunity to submit one or more articles as Word documents to the magazine.
+4.	All students can also upload high quality images, e.g. photographs.
+5.	All new contributions are disabled after a closure date for new entries, but updates can continue to be done until a final closure date.
+6.	All students must agree to Terms and Conditions before they can submit.
+7.	Once a contribution is submitted the system emails a notification to the Faculty’s Marketing Coordinator, who must make a comment within 14 days.
+8.	A Marketing Coordinator can only access contributions by students in their Faculty.
+9.	Each Marketing Coordinator needs to be able to interact with the students in their Faculty in order to edit the contributions and to select those for publication.
+10.	The University Marketing Manager can view all the selected contributions but cannot edit any. They need to be able to download all the selected contributions after the final closure date in a ZIP file for transfer out of the system.
+11.	An administrator maintains any system data, e.g. closure dates for each academic year.
+12.	A guest account for each Faculty can be used to view the selected reports.
+13.	Statistical analysis (e.g. number of contributions per Faculty) needs to be available.
+14.	The interface must be suitable for all devices (eg mobile phones, tablets, desktops).
