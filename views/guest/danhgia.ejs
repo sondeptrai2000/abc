@@ -4,11 +4,17 @@
         <%if (data.status =="Pass" &&! data.nameFile2) { %>
             <p>bạn có thể dowload file tại đây<a href="/download/<%= data._id %>"><%= data.nameFile %></a></p>
             <iframe src="/<%= data.filePath %>" height="100%" width ="100%"></iframe>
+            <%if (data.filePathAnh) { %>
+              <img src="/<%= data.filePathAnh %>" >
+            <% }  %>
           <% }  %>
         
           <%if (data.status2 =="Pass" && data.nameFile2) { %>
             <p>bạn có thể dowload file tại đây<a href="/download2/<%= data._id %>"><%= data.nameFile2 %></a></p>
             <iframe src="/<%= data.filePath2 %>" height="100%" width ="100%"></iframe>
+            <%if (data.filePathAnh2) { %>
+              <img src="/<%= data.filePathAnh2 %>" >
+            <% }  %>
           <% }  %>
       </tr> 
 <% }); %>
