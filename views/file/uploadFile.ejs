@@ -60,7 +60,7 @@
 
           <% data.forEach(function(data) { %>
             <tr>
-              <%if (data.filePathAnh) { %>
+              <%if (data.filePathAnh && data.status =="Pass") { %>
                 <td>
                   <a href="/download/<%= data._id %>">
                     <%= data.nameFile %>
@@ -76,7 +76,7 @@
 
               <% data.forEach(function(data) { %>
                 <tr>
-                  <%if (!data.filePathAnh) { %>
+                  <%if (!data.filePathAnh  && data.status =="Pass") { %>
                     <td><a href="/download/<%= data._id %>">
                         <%= data.nameFile %>
                       </a></td>
@@ -86,6 +86,35 @@
                     <% } %>
                 </tr>
                 <% }); %>
+
+                <% data.forEach(function(data) { %>
+                  <tr>
+                    <%if ((data.filePathAnh  && data.status =="Fail") || (data.filePathAnh  && data.status =="not rate")) { %>
+                      <td>
+                        <a href="/download/<%= data._id %>">
+                          <%= data.nameFile %>
+                        </a>
+                        <img width="40px" height="40px" src="<%= data.filePathAnh %>" />
+                      </td>
+                      <td>
+                        <%= data.status %>
+                      </td>
+                      <% } %>
+                  </tr>
+                  <% }); %>
+      
+                    <% data.forEach(function(data) { %>
+                      <tr>
+                        <%if ((!data.filePathAnh  && data.status =="Fail") || (!data.filePathAnh  && data.status =="not rate")) { %>
+                          <td><a href="/download/<%= data._id %>">
+                              <%= data.nameFile %>
+                            </a></td>
+                          <td>
+                            <%= data.status %>
+                          </td>
+                          <% } %>
+                      </tr>
+                      <% }); %>
 
 
 
