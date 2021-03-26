@@ -64,6 +64,7 @@ class manageController {
     // xem thong ke
     allstatistical = async (req, res) => {
         let cout = 0;
+        //Tổng số học sinh của khoa
         AccountModel.find({ slug: req.params.slug, role: "student" })
             .then(data => {
                 console.log("sohocsinhcuakhoa", data.length)
@@ -72,7 +73,7 @@ class manageController {
                         res.json("loivl")
                     }
                 })
-
+                //Số học sinh nộp bài
                 for (var i = 0; i < data.length; i++) {
                     // console.log(data[i].email)
                     fileModel.find({
@@ -84,24 +85,28 @@ class manageController {
                         })
                     })
                 }
-            })
-
+            })    
         fileModel.find({ slug: req.params.slug }, function (data) { })
             .then(data => {
                 fileModel.find({
-                    status: "pass"
-                })
-                    .then(data1 => {
+                    status: "Pass"
+                }).then(data1 => {
                         let Tongsobaidanop = data.length
                         let sobaidapass = data1.length
                         console.log("Tongsobaidanop", Tongsobaidanop)
                         console.log("sobaidapass", sobaidapass)
-                        DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { tongbaidanop: Tongsobaidanop, sobaidapass: sobaidapass }, function (err, data) {
+                        fileModel.find({
+                            status2: "Pass"
+                        }).then(datax =>{
+                            sobaidapass = sobaidapass +1
+                            DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { tongbaidanop: Tongsobaidanop, sobaidapass: sobaidapass }, function (err, data) {
                         })
-                    })
-            })
+
+                })
+        })
+        })
         DashboardtModel.find({ slug: req.params.slug }, function (err, data) {
-            console.log("dấdasds", data)
+            // console.log("dấdasds", data)
             res.render('marketingmanager/thongke', { data: data })
 
         })

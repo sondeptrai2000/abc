@@ -13,7 +13,6 @@
 </head>
 <body>
     <header>
-        
         <div class="login">
             <form method="POST" action="/account/dologin">
             <h1>Login</h1>
@@ -21,10 +20,9 @@
             <h3>Wellcome to website </h3>
             <p><input type="text" id="email" name="email" placeholder="Username"></p>
             <p><input type="password" id="password" name="password" placeholder="Password"></p>
+            <p style = " color: red">{{message}}</p>
             <p><button id="btn">Login</button></p>
-
             </form>
-            
         </div>
     </header>
     <script>
@@ -37,12 +35,6 @@
                     password : $("#password").val(),
                 }
             })
-            .then(data=>{
-                console.log(data);
-                if(!data.error){
-                window.location.href ='/'
-                }
-            }) 
         });
     </script>
 

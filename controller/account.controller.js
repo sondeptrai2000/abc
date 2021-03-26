@@ -63,7 +63,6 @@ let signUpController = async(req,res)=>{
         let username = req.body.username;
         let password = req.body.password;
         let email = req.body.email;
-        
         if(username && password){
             const salt = bcrypt.genSaltSync(saltRounds);
             const hash = bcrypt.hashSync(password, salt);
@@ -72,8 +71,7 @@ let signUpController = async(req,res)=>{
                 password :hash,
                 email
             });
-        }
-            
+        } 
         let token = jwt.sign({_id: req.body._id},'minh');
         res.cookie("token",token,{maxAge: 60*60*10000});
         return res.status(200).json({
@@ -122,10 +120,8 @@ let loginController = function(req,res){
                 res.redirect("./indexManager")
             }                         
             }else{
-                return res.status(400).json({   
-                    message : "Sai tk,mk",
-                    error : true
-                })
+                var message= "Username or password is invalid"
+                res.render("login",{message:message})
             }
         }
     )

@@ -32,10 +32,10 @@ class guestController {
                         console.log(err)
                     }
                     else if(data.length>0){
-                        res.render('guest/danhgia',{data:data})
+                        res.render('guest/danhgia.ejs',{data:data})
                     }
                     else{
-                        res.render('guest/danhgia',{data:data})
+                        res.render('guest/danhgia.ejs',{data:data})
                     }
                 })
     }
