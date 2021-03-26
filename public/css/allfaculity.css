@@ -44,15 +44,24 @@
     background-color: black;
     border: none;
     border-radius: 5px;
-    margin-top: 15px; 
+    margin-top: 25px; 
 }
 .card button a{
     color: #fff;
+    display: inline-block;
+    width: 100%;
 }
 .card button:hover{
     transform: scale(1.1);
 }
-@media (max-width: 1452px) {
+@media (max-width: 925px) {
+    .card button{
+        width: 70px;
+        height: 40px;
+        margin-top: 15px;
+    }
+}
+@media (max-width: 768px) {
     .card{
         width: 40%;
         height: 20%;
@@ -71,5 +80,14 @@
     .card h5{
         font-size: 15px;
         margin: 5px auto auto auto;
+    }
+}
+@media (max-width: 360px) {
+    .card{
+        height: 200px;
+    }
+    .card button{
+        width: 70px;
+        height: 60px;
     }
 }

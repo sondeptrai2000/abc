@@ -1,96 +1,94 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.checkbtn').click(function(){
-          $('ul').toggleClass('show');
-        });
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
       });
-    </script>
-     
-    <title>Document</title>
+    });
+  </script>
+
+  <title>Document</title>
 </head>
+
 <body>
   <div class="layout">
     <div class="header">
       <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars" ></i>
-        </label>
-      <span class="logout">&times;</span>
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
-        <div class="layout1">
-            <div class="menu">
-                <ul>
-                                        <li><a href="/account/indexStudent">Home</a></li>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexStudent">Home</a></li>
 
-                </ul>
+        </ul>
 
-            </div>
-            <div class="content">
-                
-  <table class="table">
-    <thead>
-      {{!-- {{#each user}}   --}}
-      <tr>
-        <th>Username</th>
-        <td>{{data.username}}</td>
-      </tr>
-      <tr>
-        <th>Email</th>
-         <td>{{data.email}}</td>
-      </tr>
-      <tr>
-        <th>Faculity</th>
-         <td>{{data.slug}}</td>
-      </tr>
-      <tr>
-        <th>Phone</th>
-         <td>Phone</td>
-      </tr>
-      <tr>
-        <th>Birthday</th>
-         <td>Birthday</td>
-      </tr>
-      <tr>
-        <th>Address</th>
-         <td>Address</td>
-      </tr>
-
-      {{!-- {{/each}} --}}
-    </thead>
-  </table class="table">
-                    <form id="add" action="/message/add_chat/{{data.email}}" method="post" >
-                      {{#if isFriend }}
-                        <button class="add-friend">Add to Box chat</button>
-                      {{/if}}
-                    </form>
-                            
-                     {{#if isMessage }}
-                           <form action="/message/send_messageTeacher/{{cookies.email}}/{{data.email}}"
-                                    method="GET">
-                           <button class="message">Message</button>
-                           </form>
-                     {{/if}}   
       </div>
-        </div>
-  </div>
-    
-    <div class="footer">
-        <p>@University-2021</p>
+      <div class="content">
+
+        <table class="table">
+          <thead>
+            {{!-- {{#each user}} --}}
+            <tr>
+              <th>Username</th>
+              <td>{{data.username}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{data.email}}</td>
+            </tr>
+            <tr>
+              <th>Faculity</th>
+              <td>{{data.slug}}</td>
+            </tr>
+            <tr>
+              <th>Phone</th>
+              <td>Phone</td>
+            </tr>
+            <tr>
+              <th>Birthday</th>
+              <td>Birthday</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>Address</td>
+            </tr>
+
+            {{!-- {{/each}} --}}
+          </thead>
+        </table class="table">
+        <form id="add" action="/message/add_chat/{{data.email}}" method="post">
+          {{#if isFriend }}
+          <button class="add-friend">Add to Box chat</button>
+          {{/if}}
+        </form>
+
+        {{#if isMessage }}
+        <form action="/message/send_messageTeacher/{{cookies.email}}/{{data.email}}" method="GET">
+          <button class="message">Message</button>
+        </form>
+        {{/if}}
+      </div>
     </div>
-    
+  </div>
+
+  <div class="footer">
+    <p>@University-2021</p>
+  </div>
+
 </body>
+
 </html>
-
-

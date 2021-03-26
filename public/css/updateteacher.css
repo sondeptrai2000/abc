@@ -1,0 +1,59 @@
+.content h2{
+    color: #fff;
+    margin-top: 15px;
+    font-size: 40px;
+}
+
+.swap {
+    width: 350px;
+    height: auto;
+    margin: 50px auto auto auto;
+}
+
+.swap label{
+    color: #fff;
+    float: left;
+    font-size: 20px;
+}
+.swap input{
+    float: right;
+    height: 25px;
+    border-radius: 5px;
+}
+.swap select{
+    float: right;
+    height: 25px;
+    border-radius: 5px;
+    width: 172px;
+}
+.form-group{
+    margin-top: 10px;
+}
+.btn{
+    width: 80px;
+    height: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    float: right;
+    font-size: 17px;
+    margin-right: -80px;
+}
+.btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .swap {
+        width: 300px;
+        height: auto;
+        margin: 30px auto auto auto;
+    }
+    .swap label{
+        font-size: 17px;
+    }
+    .content h2{
+        font-size: 25px;
+    }
+    
+
+}

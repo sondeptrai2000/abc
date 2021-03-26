@@ -1,48 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/updateteacher.css">
+    <link rel="stylesheet" href="/css/course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.checkbtn').click(function () {
+                $('ul').toggleClass('show');
+            });
+        });
+    </script>
+
     <title>Document</title>
 </head>
-<body>
-    <a href="/account/indexAdmin" class="navbar-brand" >Home</a>
-    <a href="/course/allcourse" class="navbar-brand" >Khóa học</a>
-    <a href="/course/create" class="navbar-brand" > Create Faculity </a>
-    <a href="/student/addStudent" class="navbar-brand" >Create student</a>
-    <a href="/teacher/addTeacher" class="navbar-brand" >Create Teacher</a>
-    <a href="" class="w3-bar-item w3-button">Logout</a>
 
-    <div class="mt-4">
-        <form method="post" action="/teacher/doupdate{{account._id}}">
-            <h2>Update Teacher</h2>
+<body>
+    <div class="layout">
+        <div class="header">
+            <form method="post" action="./course/search">
+                <input placeholder="Search" aria-label="Search" name="coursename" class="search">
+                <button type="submit" value="Search Course" class="buttonsearch">Search</button>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fa fa-bars"></i>
+                </label>
+                <a href="/logout"><span class="logout">&times;</span></a>
+            </form>
+
+
+        </div>
+        <div class="layout1">
+            <div class="menu">
+                <ul>
+                    <li><a href="/account/indexAdmin">Home</a></li>
+                    <li><a href="/course/allcourse">Faculity</a></li>
+                    <li><a href="/course/create"> Create Faculity </a></li>
+                    <li><a href="/student/addStudent">Create student</a></li>
+                    <li><a href="/teacher/addTeacher">Create Teacher</a></li>
+                </ul>
+
+            </div>
+            <div class="content">
+                <h2>Update Teacher</h2>
+                <div class="swap">
+                <form method="post" action="/teacher/doupdate{{account._id}}">
+            
             <div class="form-group">
                 <label for="coursename" >Teacher Name</label>
-                <input type="text" name="username" class="form-control" value="{{account.username}}"  >
+                <input type="text" name="username"  value="{{account.username}}" ><br>
             </div>
             <div class="form-group">
                 <label for="topic" >Email</label>
-                <input type="text" name="email" class="form-control" value="{{account.email}}">
-            </div>
+                <input type="text" name="email" value="{{account.email}}">
+            </div><br>
             <div class="form-group">
                 <label for="topic" >Course</label>
-                <input type="text" name="slug" class="form-control" value="{{account.slug}}">
-            </div>
+                <input type="text" name="slug"  value="{{account.slug}}">
+            </div><br>
             <div class="form-group">
                 <label for="topic" >Phone</label>
-                <input type="text" name="slug" class="form-control" value="{{account.slug}}">
-            </div>
+                <input type="text" name="slug"  value="{{account.slug}}">
+            </div><br>
             <div class="form-group">
                 <label for="topic" >Address</label>
-                <input type="text" name="slug" class="form-control" value="{{account.slug}}">
-            </div>
+                <input type="text" name="slug" value="{{account.slug}}">
+            </div><br>
             <div class="form-group">
                 <label for="topic" >Birthday</label>
-                <input type="text" name="slug" class="form-control" value="{{account.slug}}">
-            </div>
-            <button type="submit" class="btn btn-primary mt-4">Update</button>
+                <input type="text" name="slug"value="{{account.slug}}">
+            </div><br>
+            <button type="submit" class="btn">Update</button>
         </form>
+        </div>
+            </div>
+
+        </div>
     </div>
-</body>
-</html>
+
+
+
+   

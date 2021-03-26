@@ -1,13 +1,16 @@
-{{!-- <!DOCTYPE html>
+{{!--
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Document</title>
+  <title>Document</title>
 </head>
+
 <body>
   <table class="table table-striped">
     <thead>
@@ -19,117 +22,118 @@
       </tr>
     </thead>
 
-      <tbody>
-        {{#each teacher}}  
-          <tr>
-            <td>{{username}}</td>
-            <td>{{email}}</td>
-            
-          </tr>
-        {{/each}}
-      </tbody>
+    <tbody>
+      {{#each teacher}}
+      <tr>
+        <td>{{username}}</td>
+        <td>{{email}}</td>
+
+      </tr>
+      {{/each}}
+    </tbody>
   </table>
 
 
 </body>
+
 </html> --}}
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/course.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.checkbtn').click(function(){
-          $('ul').toggleClass('show');
-        });
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/course.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
       });
-    </script>
-     
-    <title>Document</title>
+    });
+  </script>
+
+  <title>Document</title>
 </head>
+
 <body>
   <div class="layout">
     <div class="header">
-        <form method="post" action="./course/search">
-            <input type="checkbox" id="check">
+      <form method="post" action="./course/search">
+        <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
-            <i class="fa fa-bars" ></i>
+          <i class="fa fa-bars"></i>
         </label>
-      <span class="logout">&times;</span>
-        </form>
-      
+        <a href="/logout"><span class="logout">&times;</span></a>
+      </form>
+
 
     </div>
-        <div class="layout1">
-            <div class="menu">
-                <ul>
-                    <li><a href="/account/indexAdmin">Home</a></li>
-                    <li><a href="/course/allcourse" >Khóa học</a></li>
-                    <li><a href="/course/create"> Create Faculity </a></li>
-                    <li><a href="/student/addStudent">Create student</a></li>
-                    <li><a href="/teacher/addTeacher">Create Teacher</a></li>
-                    <li><a href="/chat.html?username={{account.email}}&room={{account.slug}}" class="w3-bar-item w3-button">Chat room</a></li>
-                </ul>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexAdmin">Home</a></li>
+          <li><a href="/course/allcourse">Faculity</a></li>
+          <li><a href="/course/create"> Create Faculity </a></li>
+          <li><a href="/student/addStudent">Create student</a></li>
+          <li><a href="/teacher/addTeacher">Create Teacher</a></li>
+        </ul>
 
-            </div>
-            <div class="content">
-           <table class="table">
-    <thead>
-      {{#each teacher}}  
-      <tr>
-        <th>Username</th>
-        <td>{{username}}</td>
-      </tr>
-      <tr>
-        <th>Email</th>
-         <td>{{email}}</td>
-      </tr>
-      <tr>
-        <th>Faculity</th>
-         <td>{{slug}}</td>
-      </tr>
-      <tr>
-        <th>Phone</th>
-         <td>Phone</td>
-      </tr>
-      <tr>
-        <th>Birthday</th>
-         <td>Birthday</td>
-      </tr>
-      <tr>
-        <th>Address</th>
-         <td>Address</td>
-      </tr>
-      <tr>
-        <td rowspan="2">Acction</td>
-          <td><a href="/teacher/delete{{_id}}">Delete</a></td>
-      </tr>
-      <tr>
-        <td><a href="/teacher/update{{_id}}">Update</a></td>
-      </tr>
-      {{/each}}
-    </thead>
-  </table>
-            </div>
-                
-  
-    
-    <div class="footer">
+      </div>
+      <div class="content">
+        <h1>Teachr profile</h1>
+        <table class="table">
+          <thead>
+            {{#each teacher}}
+            <tr>
+              <th>Username</th>
+              <td>{{username}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{email}}</td>
+            </tr>
+            <tr>
+              <th>Faculity</th>
+              <td>{{slug}}</td>
+            </tr>
+            <tr>
+              <th>Phone</th>
+              <td>Phone</td>
+            </tr>
+            <tr>
+              <th>Birthday</th>
+              <td>Birthday</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>Address</td>
+            </tr>
+            <tr>
+              <td rowspan="2">Acction</td>
+              <td><a href="/teacher/delete{{_id}}">Delete</a></td>
+            </tr>
+            <tr>
+              <td><a href="/teacher/update{{_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+      <div class="footer">
         <p>@University-2021</p>
-    </div>
-    
+      </div>
+
 </body>
+
 </html>
-
-
-
-
-

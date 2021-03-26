@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/homemanage.css">
-    <link rel="stylesheet" href="/css/homestudent.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
@@ -27,7 +26,7 @@
         <label for="check" class="checkbtn">
             <i class="fa fa-bars" ></i>
         </label>
-      <span class="logout">&times;</span>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
         <div class="layout1">
@@ -35,7 +34,7 @@
                 <ul>
                     <li><a href="/account/indexManager" >Home</a></li>
                     <li><a href="/manage/allfaculity">View contributions</a></li>
-                    <li><a href="/manage/allcoursemanager">Dowload contributions</a></li>
+                    <li><a href="/manage/allcoursemanager">Download contributions</a></li>
                     <li id="popupsettime">Set Time</li>
                 </ul>
 
@@ -43,20 +42,20 @@
             <div class="content">
                 
   <table class="table">
-    <h1>Những đóng góp của sinh viên</h1>
+    <h1>Student contributions</h1>
     <th>Name</th>
     <th>Email</th>
-    <th>đánh giá bài đăng</th>
+    <th>Post reviews</th>
     {{#each data}}
         <tr>
             <td>
-                <a href="/download/{{_id}}">{{nameFile}}</a>                
+                <a href="/download/{{_id}}"></a>{{nameFile}}</a>                
             </td>
             <td>                
                 <p>{{studentemail}}</p>
             </td>
             <td>
-                <a href="/manage/readcontribution{{_id}}">xem bài báo</a>
+                <a href="/manage/readcontribution{{_id}}">View</a>
             </td>
         </tr>
       {{/each}}
@@ -69,7 +68,7 @@
                 <p>{{studentemail}}</p>
             </td>
             <td>
-                <a href="/manage/readcontribution{{_id}}">xem bài báo</a>
+                <a href="/manage/readcontribution{{_id}}">View</a>
             </td>
         </tr>
       {{/each}}
@@ -82,7 +81,7 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p> cài đặt hạn nộp bài cho toàn bộ học sinh</p>
+      <p> Set deadlines for all students</p>
 <form action="/set" method="POST">
 <input type="date" name="date">
 <input type="time" name="time">

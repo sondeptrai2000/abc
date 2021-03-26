@@ -29,7 +29,7 @@
         <label for="check" class="checkbtn">
             <i class="fa fa-bars" ></i>
         </label>
-      <span class="logout">&times;</span>
+      <a href="/logout"><span class="logout">&times;</span></a>
         </form>
       
 
@@ -48,10 +48,7 @@
             <div class="content">
             {{#each course}}  
                 <div class="card" >                          
-                            <a href="/course/{{slug}}">
-                                <h5coursename}}</h5>
-                            </a>                        
-                        <p>{{topic}}.</p>
+                                <h5>{{coursename}}</h5>                     
                         <button><a href="/course/course/update/{{_id}}">Update</a></button>
                         <button><a href="/course/course/delete/{{_id}}">Delete</a></button>
                         
@@ -61,6 +58,7 @@
             {{/each}}   
             </div>
 
+            </div>
             </div>
                 
   

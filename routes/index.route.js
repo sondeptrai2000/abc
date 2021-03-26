@@ -32,7 +32,4 @@ indexrouter.get('/home',async function (req,res){
         )
     }
 })
-
-
-
 module.exports = indexrouter

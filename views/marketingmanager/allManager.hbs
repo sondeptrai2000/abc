@@ -1,84 +1,88 @@
-{{!-- 
+{{!--
 <!DOCTYPE html>
 <html>
+
 <body>
-<p> cài đặt hạn nộp bài cho toàn bộ học sinh</p>
-<form action="/set" method="POST">
-<input type="date" name="date">
-<input type="time" name="time">
-<input type="submit">
-</form>
+  <p> cài đặt hạn nộp bài cho toàn bộ học sinh</p>
+  <form action="/set" method="POST">
+    <input type="date" name="date">
+    <input type="time" name="time">
+    <input type="submit">
+  </form>
 
 
 </body>
+
 </html> --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/homeadmin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homeadmin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.checkbtn').click(function(){
-          $('ul').toggleClass('show');
-        });
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
       });
-    </script>
-     
-    <title>Document</title>
+    });
+  </script>
+
+  <title>Document</title>
 </head>
+
 <body>
   <div class="layout">
     <div class="header">
       <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars" ></i>
-        </label>
-      <span class="logout">&times;</span>
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
-        <div class="layout1">
-            <div class="menu">
-                <ul>
-                    <li><a href="/account/indexAdmin">Home</a></li>
-                    <li><a href="/manage/addManager">Create manager</a></li>
-                </ul>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexAdmin">Home</a></li>
+          <li><a href="/manage/addManager">Create manager</a></li>
+        </ul>
 
-            </div>
-            <div class="content">
-                
-  <h1>All manager</h1>
-  
-  <table class="table">
-      <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th colspan="2">Action</th>
-      </tr>
-        {{#each account}}  
+      </div>
+      <div class="content">
+
+        <h1>All manager</h1>
+
+        <table class="table">
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th colspan="2">Action</th>
+          </tr>
+          {{#each account}}
           <tr>
             <td>{{username}}</td>
             <td>{{email}}</td>
             <td><a href="/manage/delete{{_id}}">Delete</a></td>
             <td><a href="/manage/update{{_id}}">Update</a></td>
           </tr>
-        {{/each}}
-  </table>
+          {{/each}}
+        </table>
       </div>
-    
-    <div class="footer">
-        <p>@University-2021</p>
     </div>
-    
+  </div>
+
+  <div class="footer">
+    <p>@University-2021</p>
+  </div>
+
 </body>
+
 </html>
-
-
-

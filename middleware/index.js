@@ -41,16 +41,20 @@ let checkLogin = async (req,res,next)=>{
         await AccountModel.findOne({
             email:user
         })
+        // let user = await checkEmail(req.body.email)
         .then(user=>{
             if(!user){
                 var message= "Username or password is invalid"
-                res.render("login",{message:message})
+                res.render("login",{message:message
+                }) 
+
             }else{
                 req.user = user
 
                 next();
             }
-        })       
+        }) 
+        
     } catch (error) {
         console.log(error)
         return res.status(500).json({

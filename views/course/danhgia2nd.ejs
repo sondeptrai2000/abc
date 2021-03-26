@@ -12,10 +12,8 @@
      <% data.forEach(function(data) { %>
     
         <form action="/course/rate2<%= data._id %>" method="POST">
-
             <p>bạn có thể dowload file tại đây<a href="/download2/<%= data._id %>"><%= data.nameFile2 %></a></p>
             <iframe src="/<%= data.filePath2 %>" class="viewfiles"></iframe>
-
             <%if (data.filePathAnh2) { %>
                 <img width="40px" height="40px" src="/<%= data.filePathAnh2 %>"/>
             <% }  %>
@@ -30,16 +28,9 @@
             </p>
             <p>Comment: </p><textarea name="comment" id="" cols="56" rows="20" value="<%= data.comment2 %>" required><%= data.comment2 %></textarea>
             <br>
-
             <button type="submit" class="button">Submit</button>
             </div>
-
     </form>
     <% }); %>
 </body>
 </html>
-
-
-
-
-

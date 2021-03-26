@@ -54,6 +54,15 @@
     text-decoration: none;
     cursor: pointer;
   }
+.form-control{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.form-control:hover{
+    transform: scale(1.1);
+}
 @media (max-width: 1452px) {
     .menu ul li a{
         font-size: 12px;

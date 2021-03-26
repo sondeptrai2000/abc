@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/updatestudent.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.checkbtn').click(function(){
-          $('ul').toggleClass('show');
-        });
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/updateteacher.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
       });
-    </script>
-     
-    <title>Document</title>
+    });
+  </script>
+
+  <title>Document</title>
 </head>
+
 <body>
   <div class="layout">
     <div class="header">
       <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars" ></i>
-        </label>
-      <span class="logout">&times;</span>
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
-        <div class="layout1">
-            <div class="menu">
-                <ul>
-                    {{!-- link --}}
-                </ul>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexAdmin">Home</a></li>
+          <li><a href="/guest/addGuest">Create guest</a></li>
+        </ul>
 
-            </div>
-            <div class="content">
-                <h2>Update Guest</h2>
-  <form method="post" action="/guest/doupdate{{account._id}}">
-            
+      </div>
+      <div class="content">
+        <h2>Update Guest</h2>
+        <div class="swap">
+        <form method="post" action="/guest/doupdate{{account._id}}">
 
-            <div class="form-group">
-                <label for="coursename" >Guest Name</label>
-                <input type="text" name="username"  value="{{account.username}}"  >
-            </div>
-            <div class="form-group">
-                <label for="topic" >Topic</label>
-                <input type="text" name="email" class="inputemail"  value="{{account.email}}">
-            </div>
-            
-            <button type="submit" class="buttonupdate">Update</button>
+
+          <div class="form-group">
+            <label for="coursename">Guest Name</label>
+            <input type="text" name="username" value="{{account.username}}">
+          </div><br>
+          <div class="form-group">
+            <label for="topic">Topic</label>
+            <input type="text" name="email"  value="{{account.email}}">
+          </div>
+
+          <button type="submit" class="btn">Update</button>
         </form>
       </div>
-    
-    <div class="footer">
+      </div>
+      </div>
+  </div>
+
+      <div class="footer">
         <p>@University-2021</p>
-    </div>
+      </div>
 
-    
+
 </body>
+
 </html>
-
-
-
-

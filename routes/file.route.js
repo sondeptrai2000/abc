@@ -585,12 +585,13 @@ fileRouter.post('/upload2',upload.array('filePath',2),(req,res)=>{
     }
 })
  //test chọn file và nén thành zip để tải xuống
-fileRouter.get('/lol:slug',(req,res)=>{
+ fileRouter.get('/lol:slug',(req,res)=>{
     slug = req.params.slug
     fileModel.find({slug:slug},(err,data)=>{
         res.render('marketingmanager/selectfiletodownload.ejs',{data:data})
     })
 })
+
 
 var file_system = require('fs');
 var archiver = require('archiver');

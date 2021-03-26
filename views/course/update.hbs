@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/updatecourse.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.checkbtn').click(function(){
-          $('ul').toggleClass('show');
-        });
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/updateteacher.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
       });
-    </script>
-     
-    <title>Document</title>
+    });
+  </script>
+
+  <title>Document</title>
 </head>
+
 <body>
   <div class="layout">
     <div class="header">
       <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars" ></i>
-        </label>
-      <span class="logout">&times;</span>
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
-        <div class="layout1">
-            <div class="menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/course/allcourse" >Khóa học</a></li>
-                    <li id="popup_createfaculity"> Create Faculity</li>
-                    <li id="popup_createstudent">Create student</a></li>
-                    <li id="popup_createteacher">Create Teacher</a></li>
-                </ul>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexAdmin">Home</a></li>
+          <li><a href="/course/allcourse">Faculity</a></li>
+          <li><a href="/course/create"> Create Faculity </a></li>
+          <li><a href="/student/addStudent">Create student</a></li>
+          <li><a href="/teacher/addTeacher">Create Teacher</a></li>
+        </ul>
 
-            </div>
-            <div class="content">
-  
-<form method="post" action="/course/doupdate{{course._id}}">
-            <h2>Update course</h2>
+      </div>
+      <div class="content">
+        <h2>Update course</h2>
+        <div class="swap">
+
+        <form method="post" action="/course/doupdate{{course._id}}">
+          
+          <div class="form-group">
+            <label for="coursename">Course Name</label>
+            <input type="text" name="coursename" value="{{course.coursename}}">
+          </div>
+            
+            <br>
             <div class="form-group">
-                <label for="coursename" >Course Name</label>
-                <input type="text" name="coursename" value="{{course.coursename}}"  >
-    <br>
-                <label for="topic" >Topic</label>
-                <input type="text" name="topic"value="{{course.topic}}" class="topic">
+              <label for="topic">Topic</label>
+            <input type="text" name="topic" value="{{course.topic}}" class="topic">
             </div>
-            {{!-- <div class="form-group">
-                <label for="exampleInputEmail1" ></label>
-                <input type="text" class="form-control"  >
-            </div> --}}
-            <button type="submit">Update</button>
+            
+          </div>
+          {{!-- <div class="form-group">
+            <label for="exampleInputEmail1"></label>
+            <input type="text" class="form-control">
+          </div> --}}
+          <button type="submit" class="btn">Update</button>
         </form>
+        </div>
       </div>
-      </div>
-    
-    <div class="footer">
-        <p>@University-2021</p>
     </div>
-    
-</body>
-  </html>
+  </div>
 
+    <div class="footer">
+      <p>@University-2021</p>
+    </div>
+
+</body>
+
+</html>

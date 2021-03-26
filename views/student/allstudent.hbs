@@ -41,13 +41,13 @@
         <label for="check" class="checkbtn">
             <i class="fa fa-bars" ></i>
         </label>
-      <span class="logout">&times;</span>
+      <a href="/logout"><span class="logout">&times;</span></a>
 
     </div>
         <div class="layout1">
             <div class="menu">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/account/indexAdmin">Home</a></li>
                     <li><a href="/course/allcourse" >Faculity</a></li>
                     <li><a href="/course/create"> Create Faculity </a></li>
                     <li><a href="/student/addStudent">Create student</a></li>
@@ -61,8 +61,8 @@
   
   <table class="table">
       <tr>
-        <th>username</th>
-        <th>password</th>
+        <th>Username</th>
+        <th>Email</th>
         <th colspan="2">Action</th>
       </tr>
         {{#each account}}  
@@ -75,6 +75,8 @@
         {{/each}}
   </table>
       </div>
+        </div>
+  </div>
     
     <div class="footer">
         <p>@University-2021</p>

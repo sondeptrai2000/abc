@@ -45,7 +45,6 @@ body{
     height: 85vh;
     float: left;
     z-index: 4;
-    text-align: center;
     
 }
 .menu ul{
@@ -57,11 +56,15 @@ body{
     margin: 15px 15px;
     background-color: grey;
     border-radius: 20px 20px 20px 20px;
+    text-align: center;
 }
 .menu ul li a{
     color: white;
     font-size: 15px;
-    padding: 10px 15px;
+    width: 100%;
+    height: 100%;
+    display:inline-block;
+
 }
 .menu ul li:hover{
     opacity: 0.5;;
@@ -172,14 +175,8 @@ td {
     transform: scale(1.1);
     cursor: pointer;
 }
-@media (max-width: 1452px) {
-    
-    .menu ul li a{
-        font-size: 12px;
-    }
 
-}
-@media (max-width: 768px) {
+@media (max-width: 821px) {
  
     
     
@@ -198,6 +195,7 @@ td {
     }
     .menu{
         width: 0;
+        height:83vh;
     }
     .content{
         width: 100%;
@@ -222,13 +220,15 @@ td {
     }
     .menu ul{
 
-        height: 80vh;
+        height: 85vh;
         position: fixed;
         background-color: black;
-        left: -50%;
+        left: -60%;
         text-align: center;
         transition: all 0.5s;
         z-index: 3;
+        width: 200px;
+        margin-top: 0;
 
     }
     .menu ul li a{
