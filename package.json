@@ -1,11 +1,14 @@
 {
   "name": "test",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "",
-  "main": "server.js",
+  "main": "sever.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon sever.js",
+    "start": "node sever.js"
   },
   "author": "",
   "license": "ISC",
