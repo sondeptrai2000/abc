@@ -4,7 +4,7 @@ let {getUserById} = require('../middleware/index')
 var jwt = require("jsonwebtoken")
 var AccountModel = require('../models/account')
 
-indexrouter.get('/login' ,(req,res,next)=>{
+indexrouter.get('/' ,(req,res,next)=>{
     res.render('login.hbs')
 })
 
