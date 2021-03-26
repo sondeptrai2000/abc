@@ -8,6 +8,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
+      "build": "bower install && grunt build",
     "start": "node server.js"
   },
   "author": "",
