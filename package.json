@@ -5,9 +5,10 @@
     "node": "14.x"
   },
   "description": "",
-  "main": "app.js",
+  "main": "sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
   },
   "author": "",
   "license": "ISC",
