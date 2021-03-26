@@ -224,10 +224,10 @@ class CourseController {
             console.log(err)
         }
         else if(data.length>0){
-            res.render('course/danhgia2nd',{data:data})
+            res.render('course/danhgia2nd.ejs',{data:data})
         }
         else{
-            res.render('course/danhgia2nd',{data:data})
+            res.render('course/danhgia2nd.ejs',{data:data})
         }
         })
     }

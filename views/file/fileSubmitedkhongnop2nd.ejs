@@ -66,6 +66,23 @@
                     <% }  %>
                 </tr>
               <% }); %>
+
+              <% data.forEach(function(data) { %>
+                <tr>
+                    <%if (data.status =="Fail") { %>
+                    <td>                        
+                      <a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+                      <%if (data.filePathAnh) { %>
+                        <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                      <% }  %> 
+                    </td>
+                    
+                    <td><%= data.status %></td>
+                    <td><%= data.comment %></td>
+                    <td><p>Cant update file</p></td>
+                    <% }  %>
+                </tr>
+              <% }); %>
               </table>  
               <h1>  Update file </h1>
               <table class="table">
@@ -100,7 +117,26 @@
                   </tr>   
                 <% }); %>
                 <!-- <th> bài 2nd đang chờ phê duyệt </th> -->
-          
+                <% data.forEach(function(data) { %>
+                  <tr>
+                      <%if (data.status =="not rate" && data.nameFile2 && data.status2 =="Fail") { %>
+                      <td><a href="/download/<%= data._id %>"><%= data.nameFile %></a>
+                        <%if (data.filePathAnh) { %>
+                          <img src="/<%= data.filePathAnh %>" width="40px" height="40px"/>
+                        <% }  %>                        </td>
+                      <!-- <td><%= data.status %></td> -->
+                      <td><a href="/download2/<%= data._id %>"><%= data.nameFile2 %>   
+                        <%if (data.filePathAnh2) { %>
+                          <img src="/<%= data.filePathAnh2 %>" width="40px" height="40px"/>
+                        <% }  %>                        </td>
+                      <td><%= data.status2 %></td>
+                      <td><%= data.comment2 %></td>
+
+                      <td><p>Can't update</p>                      </td>
+                      <% }  %>
+                  </tr> 
+                <% }); %>
+
                 <% data.forEach(function(data) { %>
                   <tr>
                       <%if (data.status =="not rate" && data.nameFile2 && data.status2 =="not rate") { %>

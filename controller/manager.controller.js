@@ -10,10 +10,9 @@ class manageController {
 
     settime(req, res, next) {
         let date = req.body.date;
-        let time = req.body.time;
+        let time = req.body.time;        
         //thời gian ban đầu
         let deadline1 = date + " " + time;
-
         var someDate = new Date(date);
         someDate.setDate(someDate.getDate() + 14);
         var dateFormated = someDate.toISOString().substr(0, 10);
@@ -27,8 +26,8 @@ class manageController {
                 if (err) {
                     res.json("")
                 }
-                res.json(data)
-            })
+                res.jsonp({success : true})
+    })
         })
 
     }

@@ -74,9 +74,9 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p> Set deadlines for all students</p>
-<form action="/manage/settime" method="POST">
-<input type="date" name="date">
-<input type="time" name="time"><br>
+{{!-- <form action="/manage/settime" method="POST"> --}}
+<input type="date" name="date" id = "date">
+<input type="time" name="time" id = "time"><br>
 <input type="submit" id="btnUpdate2" value="Submit">
 </form>
     </div>
@@ -100,6 +100,28 @@
     modal.style.display = "block";
   }
   btn2.onclick = function() {
+    $.ajax({
+    url:"/manage/settime",
+    method: "post",
+    data : {
+      date : $("#date").val(),
+      time : $("#time").val(),
+    },
+    cache : false,
+    success : function (data) {
+        // data is the object that you send form the server by 
+        // res.jsonp();
+        // here data = {success : true}
+        // validate it
+        if(data['success']){
+            alert("Settime success");
+        }
+    },
+    error : function () {
+        // some error handling part
+        alert("Oops! Something went wrong.");
+    }
+});
     modal.style.display = "none";
   }
   // When the user clicks on <span> (x), close the modal
