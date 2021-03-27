@@ -5,6 +5,7 @@ let {checkAuth,checkAdmin } = require('../middleware/index')
 const { isEmail } = require('../middleware/index');
 
 const teacherController = require('../controller/teacher.controller');
+teacherRoute.use(checkAuth);
 
 teacherRoute.get('/addTeacher',teacherController.addTeacher)
 teacherRoute.post('/doAddTeacher', isEmail,teacherController.doAddTeacher)

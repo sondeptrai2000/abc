@@ -7,6 +7,6 @@ router.post('/dologin', checkLogin, loginController)
 router.get('/indexAdmin',checkAuth ,checkAdmin, indexAdmin)
 router.get('/indexTeacher',checkAuth ,checkTeacher, indexTeacher)
 router.get('/indexStudent',checkAuth , indexStudent)
-router.get('/indexGuest',indexGuest)
-router.get('/indexManager',indexManager)
+router.get('/indexGuest',checkAuth,indexGuest)
+router.get('/indexManager',checkAuth,indexManager)
 module.exports = router

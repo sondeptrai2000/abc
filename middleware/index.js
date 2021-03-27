@@ -89,7 +89,7 @@ let checkAuth = async (req,res,next)=>{
             status: 500,
             error : true
         },
-        res.redirect('/login'))
+        res.redirect('/'))
     }
 }
 

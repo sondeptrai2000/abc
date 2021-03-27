@@ -1,13 +1,14 @@
 var express = require('express');
 var FaculityModel = require('../models/faculity'); 
 var manageRoute = express.Router();
-// let {checkAuth,checkAdmin } = require('../middleware/index')
+let {checkAuth,checkAdmin } = require('../middleware/index')
 // const { isEmail } = require('../middleware/index');
 const manageController = require('../controller/manager.controller');
 const { isEmail } = require('../middleware/index');
 
 manageRoute.use('/uploads', express.static('uploads'));
 manageRoute.use('/public', express.static('public'));
+manageRoute.use(checkAuth);
 
 //cài đặt dealine nộp bài
 manageRoute.post('/settime', manageController.settime)

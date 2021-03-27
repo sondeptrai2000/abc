@@ -7,6 +7,7 @@ const guestController = require('../controller/guest.controller');
 
 guestRoute.use('/uploads', express.static('uploads'));
 guestRoute.use('/public', express.static('public'));
+guestRoute.use(checkAuth);
 
 //hiển thị các khoa 
 guestRoute.get('/danhsachsvien:slug', guestController.allcontribution)

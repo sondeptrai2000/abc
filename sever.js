@@ -22,8 +22,9 @@ app.get('/logout', function (req, res, next) {
     res.clearCookie("id");
     res.clearCookie("slug");
     res.clearCookie("email");
+    res.clearCookie("deadline");
     res.clearCookie("_cfduid");
-    res.redirect('/login')
+    res.redirect('/')
 });
 var pathh = path.resolve(__dirname,'public');
 app.use(express.static(pathh));

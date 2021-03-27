@@ -6,6 +6,7 @@ const { isEmail } = require('../middleware/index');
 
 const faculityController = require('../controller/faculity.controller');
 
+faculityRoute.use(checkAuth);
 
 // tương tác với faculity
 faculityRoute.get('/allfaculity', faculityController.allfaculity)
@@ -15,7 +16,6 @@ faculityRoute.post('/faculity/search', faculityController.search)
 faculityRoute.get('/allStudent/:slug/',faculityController.allstudent,)
 faculityRoute.get('/Teacher/:slug',faculityController.teacher)
 
-faculityRoute.use(checkAuth);
 faculityRoute.get('/view:slug', checkTeacher,faculityController.viewmanagine)
 faculityRoute.get('/evaluate/:id', checkTeacher,faculityController.danhgiabaibao)
 faculityRoute.get('/allDocument/:email',checkTeacher ,faculityController.allDocument)
