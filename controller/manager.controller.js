@@ -60,53 +60,115 @@ class manageController {
     }
 
 
-    // xem thong ke
-    allstatistical = async (req, res) => {
-        let cout = 0;
-        AccountModel.find({ slug: req.params.slug, role: "student" })
-            .then(data => {
-                console.log("sohocsinhcuakhoa", data.length)
-                DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { hocsinhcuakhoa: data.length }, function (err, data) {
-                    if (err) {
-                        res.json("loivl")
-                    }
-                })
+    // // xem thong ke
+    // allstatistical = async (req, res) => {
+    //     AccountModel.find({ slug: req.params.slug, role: "student" })
+    //         .then(data => {
+    //             DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { hocsinhcuakhoa: data.length }, function (err, data) {
+    //                 if (err) {
+    //                     res.json("loivl")
+    //                 }
+    //             })
+    //             let cout = 0;
+    //             for (var i = 0; i < data.length; i++) {
+    //                 // console.log(data[i].email)
+    //                 fileModel.find({
+    //                     slug: req.params.slug,
+    //                     studentemail: data[i].email
+    //                 }).then(data2 => {
+    //                     cout = cout + 1;
+    //                     DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { soHocsinhnopbai: cout }, function (err, data) {
+    //                     })
+    //                 })
+    //             }
+    //         })
 
-                for (var i = 0; i < data.length; i++) {
-                    // console.log(data[i].email)
-                    fileModel.find({
-                        slug: req.params.slug,
-                        studentemail: data[i].email
-                    }).then(data2 => {
-                        cout = cout + 1;
-                        DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { soHocsinhnopbai: cout }, function (err, data) {
-                        })
-                    })
+    //     fileModel.find({ slug: req.params.slug }, function (data) { })
+    //         .then(data => {
+    //             fileModel.find({
+    //                 status: "Pass"
+    //             })
+    //                 .then(data1 => {
+    //                     let Tongsobaidanop = data.length
+    //                     let sobaidapass = data1.length
+    //                     fileModel.find({
+    //                         status2: "Pass"
+    //                     })
+    //                         .then(data1 => {
+    //                             sobaidapass = sobaidapass + 1
+    //                             DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { tongbaidanop: Tongsobaidanop, sobaidapass: sobaidapass }, function (err, data) {
+    //                             })
+    //                         })
+                    
+    //                 })
+    //         })
+    //     DashboardtModel.find({ slug: req.params.slug }, function (err, data) {
+    //         console.log("dấdasds", data)
+    //         res.render('marketingmanager/thongke', { data: data })
+
+    //     })
+    // }
+
+// xem thong ke
+allstatistical = async (req, res) => {
+    AccountModel.find({ slug: req.params.slug, role: "student" })
+        .then(data => {
+            DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { hocsinhcuakhoa: data.length }, function (err, data) {
+                if (err) {
+                    res.json("loivl")
                 }
             })
-
-        fileModel.find({ slug: req.params.slug }, function (data) { })
-            .then(data => {
-                fileModel.find({
-                    status: "pass"
-                })
-                    .then(data1 => {
-                        let Tongsobaidanop = data.length
-                        let sobaidapass = data1.length
-                        console.log("Tongsobaidanop", Tongsobaidanop)
-                        console.log("sobaidapass", sobaidapass)
-                        DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { tongbaidanop: Tongsobaidanop, sobaidapass: sobaidapass }, function (err, data) {
-                        })
-                    })
-            })
-        DashboardtModel.find({ slug: req.params.slug }, function (err, data) {
-            console.log("dấdasds", data)
-            res.render('marketingmanager/thongke', { data: data })
-
+            let cout = 0;
+            for (var i = 0; i < data.length; i++) {
+                fileModel.aggregate(
+                    [ 
+                        { "$match":  { studentemail: data[i].email, slug: req.params.slug } }
+                    ],  function(err, results) {
+                            if(results.length>0){
+                                cout = cout +1
+                                DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { soHocsinhnopbai: cout }, function (err, data) {
+                                })
+                            }else{
+                                DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { soHocsinhnopbai: cout }, function (err, data) {
+                                })
+                            } 
+                        }
+                )
+            }
         })
-    }
 
+    fileModel.find({ slug: req.params.slug }, function (data) { })
+        .then(data => {
+            let Tongsobaidanop = data.length
+            fileModel.count( {slug: req.params.slug,status: "Pass"}, (err, count) => {
+                fileModel.count( {slug: req.params.slug,status2: "Pass"}, (err, count2) => {
+                    let sobaidapass = count + count2
+                    DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { tongbaidanop: Tongsobaidanop, sobaidapass: sobaidapass }, function (err, data) {
+                    })   
+                });
 
+            });
+        })
+        fileModel.find({ slug: req.params.slug }, function (data) { })
+        .then(data => {
+            fileModel.count( {slug: req.params.slug,status: "Fail"}, (err, count) => {
+                fileModel.count( {slug: req.params.slug,status2: "Fail"}, (err, count2) => {
+                    let sobaidafail = count + count2
+                    DashboardtModel.findOneAndUpdate({ slug: req.params.slug }, { fail: sobaidafail }, function (err, data) {
+                    })   
+                });
+
+            });
+        }) 
+
+        res.redirect("Statistical" + req.params.slug )
+    
+}
+statistical(req, res) {
+    DashboardtModel.find({ slug: req.params.slug }, function (err, data) {
+        res.render('marketingmanager/thongke', { data: data })
+    })
+}
     //đọc bài viết vừa chọn
     readcontribution(req, res) {
         let id = req.params.id

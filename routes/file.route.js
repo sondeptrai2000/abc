@@ -56,7 +56,6 @@ fileRouter.get('/',(req,res)=>{
 fileRouter.get('/fileSubmited',(req,res)=>{
     let email = req.cookies.email
     FaculityModel.findOne({},function(err,result){
-        console.log("data là ", result.deadline)
         fileModel.find({studentemail:email},(err,data)=>{
             if(err){
                 console.log(err)
@@ -70,10 +69,12 @@ fileRouter.get('/fileSubmited',(req,res)=>{
                 let minutes = date_ob.getMinutes().toString().padStart(2, "0");;
                 let year = date_ob.getFullYear();
                 dl = year + "-" + month + "-" + date + " " + hour + ":" + minutes;
+                a = result.deadline2
+                b = result.deadline
                 if(dl < result.deadline2  ){
-                    res.render('file/fileSubmited.ejs',{data:data, deadline2:result.deadline2})
+                    res.render('file/fileSubmited.ejs',{data:data, deadline2:a,deadline:b })
                 } else{
-                    res.render('file/fileSubmitedkhongnop2nd.ejs',{data:data,deadline2:result.deadline2})
+                    res.render('file/fileSubmitedkhongnop2nd.ejs',{data:data,deadline2:a,deadline:b})
                 }
             }
             else{
@@ -85,11 +86,13 @@ fileRouter.get('/fileSubmited',(req,res)=>{
                 let minutes = date_ob.getMinutes().toString().padStart(2, "0");;
                 let year = date_ob.getFullYear();
                 dl = year + "-" + month + "-" + date + " " + hour + ":" + minutes;
+                a = result.deadline2
+                b = result.deadline
                 if(dl < result.deadline2  ){
-                    res.render('file/fileSubmited.ejs',{data:data})
+                    res.render('file/fileSubmited.ejs',{data:data, deadline2:a,deadline:b})
                 } else{
-                    res.render('file/fileSubmitedkhongnop2nd.ejs',{data:data})
-                }            
+                    res.render('file/fileSubmitedkhongnop2nd.ejs',{data:data,deadline2:a,deadline:b})
+                }
             }
         })
     })

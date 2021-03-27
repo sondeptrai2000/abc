@@ -32,8 +32,7 @@ let indexStudent = (req,res)=>{
     .then(data=>{
         FaculityModel.findOne({},function(err, result){
             var deadline = result.deadline
-            res.cookie("deadline",deadline,{maxAge: 24*60*60*10000});
-            res.render('./home/homeStudent',{account:data})
+            res.render('./home/homeStudent',{account:data,deadline:deadline})
         })    
     })
 }

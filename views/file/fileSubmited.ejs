@@ -39,10 +39,12 @@
             </div>
             <div class="content">
               <<h1>Summit files:</h1>
-              <p id = "del" style="color: #FFF;">Deadline for edit: (yy-mm-dd hh:mm)</p>
+              <p style="color:red;">Deadline for edit:</p> 
+              <p id = "del" style="color:red;"><%= a %></p>
+              <p style="color:red;">(yy-mm-dd hh:mm)</p>
+              <p id = "del1" style="display: none"><%= b %></p>
               <h1> Reports Passed 1st deadline</h1>
               <table class="table">
-                
               <tr>
                   <th>First submit</th>
                   <th>Status</th>
@@ -212,15 +214,6 @@
   <input type="radio" id="female" name="gender" value="No"> <label for="female">No</label><br><br>
    <input type = "submit" id="btn1" value="Next">
   <script language="javascript">
-    var allcookies = decodeURIComponent(document.cookie);
-        cookiearray = allcookies.split(';');
-               for(var i=0; i<cookiearray.length; i++){
-                 if(cookiearray[i].split('=')[0] =="deadline"){
-                    dealine = cookiearray[i].split('=')[1];
-                    document.getElementById("del").innerHTML = "Deadline for update file:" + dealine + "(yy-mm-dd hh:mm)";
-                    break;
-                 }
-               } 
       document.getElementById("btn1").onclick = function ()
       {
         let ts = Date.now();
@@ -231,29 +224,22 @@
         let minutes = date_ob.getMinutes().toString().padStart(2, "0");;
         let year = date_ob.getFullYear();
         dl = year + "-" + month + "-" + date + " " + hour + ":" + minutes;
-      
-        var allcookies = decodeURIComponent(document.cookie);
-        cookiearray = allcookies.split(';');
-               for(var i=0; i<cookiearray.length; i++){
-                 if(cookiearray[i].split('=')[0] =="deadline"){
-                    var dealine = cookiearray[i].split('=')[1];
-                    if(dl <dealine){
-        var checkbox = document.getElementsByName("gender");
+        var checkbox = document.getElementsByName("gender"); 
           for (var i = 0; i < checkbox.length; i++){
             if (checkbox[i].checked === true){
               if(checkbox[i].value ==='No'){
                 alert("You must agree to continue")
               }else{
+                var dealine = document.getElementById("del1").innerHTML ;
+                if(dl < dealine){
                   location.href = "/file"
+                  }else{
+                    alert("Out of date to upload file")
+                  }
               }
             }
           }
-        }else{
-          alert("1st deadline for submission")
-        }                         break;
-                 }
-               } 
-     
+        
     };
   </script>
       </div>

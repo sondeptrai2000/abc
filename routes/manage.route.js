@@ -17,6 +17,8 @@ manageRoute.post('/settime', manageController.settime)
 manageRoute.get('/allfaculity', manageController.allfaculity)
 manageRoute.get('/allcontribution:slug', manageController.allcontribution)
 manageRoute.get('/viewStatistical:slug', manageController.allstatistical)
+manageRoute.get('/Statistical:slug', manageController.statistical)
+
 
 manageRoute.get('/readcontribution:id', manageController.readcontribution)
 

@@ -26,6 +26,10 @@ const DashboardSchema = new Schema({
         type : String,
         default : "0"
     },
+    fail:  {
+        type : String,
+        default : "0"
+    },
 
     slug: String
 },
