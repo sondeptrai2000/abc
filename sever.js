@@ -23,7 +23,6 @@ app.get('/logout', function (req, res, next) {
     res.clearCookie("slug");
     res.clearCookie("email");
     res.clearCookie("_cfduid");
-    
     res.redirect('/login')
 });
 var pathh = path.resolve(__dirname,'public');
@@ -31,7 +30,7 @@ app.use(express.static(pathh));
 app.use(bodyParser.urlencoded({extended:false}));
 
 var AccountRoutes = require('./routes/account.route')
-var courseRoute = require('./routes/course.route')
+var faculityRoute = require('./routes/faculity.route')
 var indexrouter = require('./routes/index.route')
 var studentRoute = require('./routes/student.route')
 var teacherRoute = require('./routes/teacher.route')
@@ -45,7 +44,7 @@ app.use('/guest', guestRoutes);
 app.use('/student', studentRoute);
 app.use('/teacher', teacherRoute);
 app.use('/account', AccountRoutes);
-app.use('/course',courseRoute);
+app.use('/faculity',faculityRoute);
 app.use('/',indexrouter);
 app.use('/file',fileRouter)
 app.use('/manage',manageRoutes)

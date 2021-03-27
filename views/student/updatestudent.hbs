@@ -34,8 +34,8 @@
       <div class="menu">
         <ul>
           <li><a href="/account/indexAdmin">Home</a></li>
-          <li><a href="/course/allcourse">Faculity</a></li>
-          <li><a href="/course/create"> Create Faculity</a></li>
+          <li><a href="/faculity/allfaculity">Faculity</a></li>
+          <li><a href="/faculity/create"> Create Faculity</a></li>
           <li><a href="/student/addStudent">Create student</a></li>
           <li><a href="/teacher/addTeacher">Create Teacher</a></li>
         </ul>
@@ -48,7 +48,7 @@
 
 
           <div class="form-group">
-            <label for="coursename">Student Name</label>
+            <label for="faculityname">Student Name</label>
             <input type="text" name="username" value="{{account.username}}">
           </div><br>
           <div class="form-group">
@@ -56,7 +56,7 @@
             <input type="text" name="email" class="inputemail" value="{{account.email}}">
           </div><br>
           <div class="form-group">
-            <label for="topic">Course</label>
+            <label for="topic">Faculity</label>
             <input type="text" name="slug" class="inputtopic" value="{{account.slug}}">
           </div><br>
           <button type="submit" class="btn">Update</button>

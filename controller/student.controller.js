@@ -1,4 +1,4 @@
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 const AccountModel = require('../models/account')
 const { data, param, css } = require('jquery')
 var jwt =require('jsonwebtoken')
@@ -7,8 +7,8 @@ var saltRounds = 10;
 var cookie = require('cookie');
 
 let addStudent = (req,res)=>{
-    CourseModel.find(function(err,data){
-        res.render('./student/course_student',{course:data})    
+    FaculityModel.find(function(err,data){
+        res.render('./student/faculity_student',{faculity:data})    
 })
 }
 
@@ -31,7 +31,7 @@ let doAddStudent=(req,res)=>{
                         console.log(err)
                     }else{
                         
-                        res.redirect('/course/allstudent/'+ slug)
+                        res.redirect('/faculity/allstudent/'+ slug)
                     }
                 })
 }
@@ -49,7 +49,7 @@ let deleteStudent = (req,res)=>{
             _id :  req.params.id
         })
         .then(()=>{
-            res.redirect('/course/allStudent/'+ slug)
+            res.redirect('/faculity/allStudent/'+ slug)
         })
     })
     
@@ -60,7 +60,7 @@ let doupdate =(req,res)=>{
         _id : req.params.id
     }, req.body)
     .then(()=>{
-        res.redirect('/course/allStudent/'+ req.body.slug)
+        res.redirect('/faculity/allStudent/'+ req.body.slug)
     })
 }
 

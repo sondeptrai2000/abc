@@ -1,7 +1,7 @@
 // let {signUp} = require('../service/auth')
 const { JsonWebTokenError } = require('jsonwebtoken');
 const AccountModel = require('../models/account');
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 const { data } = require('jquery');
@@ -30,7 +30,7 @@ let indexStudent = (req,res)=>{
     let email = req.cookies.email
     AccountModel.findOne({email : email})
     .then(data=>{
-        CourseModel.findOne({},function(err, result){
+        FaculityModel.findOne({},function(err, result){
             var deadline = result.deadline
             res.cookie("deadline",deadline,{maxAge: 24*60*60*10000});
             res.render('./home/homeStudent',{account:data})
@@ -39,10 +39,10 @@ let indexStudent = (req,res)=>{
 }
 
 let indexGuest = (req,res)=>{
-    CourseModel.find({
+    FaculityModel.find({
     })
     .then(data=>{
-        res.render('./home/homeGuest',{course:data})
+        res.render('./home/homeGuest',{faculity:data})
     })
     .catch(err=>{
         res.json("loi sever")

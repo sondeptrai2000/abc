@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/updateteacher.css">
-    <link rel="stylesheet" href="/css/course.css">
+    <link rel="stylesheet" href="/css/faculity.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
@@ -24,9 +24,9 @@
 <body>
     <div class="layout">
         <div class="header">
-            <form method="post" action="./course/search">
-                <input placeholder="Search" aria-label="Search" name="coursename" class="search">
-                <button type="submit" value="Search Course" class="buttonsearch">Search</button>
+            <form method="post" action="./faculity/search">
+                <input placeholder="Search" aria-label="Search" name="faculityname" class="search">
+                <button type="submit" value="Search faculity" class="buttonsearch">Search</button>
                 <input type="checkbox" id="check">
                 <label for="check" class="checkbtn">
                     <i class="fa fa-bars"></i>
@@ -40,8 +40,8 @@
             <div class="menu">
                 <ul>
                     <li><a href="/account/indexAdmin">Home</a></li>
-                    <li><a href="/course/allcourse">Faculity</a></li>
-                    <li><a href="/course/create"> Create Faculity </a></li>
+                    <li><a href="/faculity/allfaculity">Faculity</a></li>
+                    <li><a href="/faculity/create"> Create Faculity </a></li>
                     <li><a href="/student/addStudent">Create student</a></li>
                     <li><a href="/teacher/addTeacher">Create Teacher</a></li>
                 </ul>
@@ -53,7 +53,7 @@
                 <form method="post" action="/teacher/doupdate{{account._id}}">
             
             <div class="form-group">
-                <label for="coursename" >Teacher Name</label>
+                <label for="faculityname" >Teacher Name</label>
                 <input type="text" name="username"  value="{{account.username}}" ><br>
             </div>
             <div class="form-group">
@@ -61,7 +61,7 @@
                 <input type="text" name="email" value="{{account.email}}">
             </div><br>
             <div class="form-group">
-                <label for="topic" >Course</label>
+                <label for="topic" >faculity</label>
                 <input type="text" name="slug"  value="{{account.slug}}">
             </div><br>
             <div class="form-group">

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form class="d-flex" method="post" action="/faculity/faculity/addfaculitystudent">
+
+    <select name="listFaculity">
+      {{#each faculity}}
+      <option value="">{{faculityname}}</option>
+      {{/each}}
+    </select>
+
+    {{!-- {{#each account}} --}}
+    <input class="form-control me-2" aria-label="Search" name="email">
+    <button class="btn btn-outline-success" type="submit" value="Search">Search</button>
+    {{!-- {{/each}} --}}
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each account}}
+      <tr>
+        <td>{{username}}</td>
+        <td>{{email}}</td>
+        <td><a href="/faculity/delete?id={{_id}}">Delete</a></td>
+        <td><a href="/update?id={{_id}}">Update</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</body>
+
+</html>

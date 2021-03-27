@@ -1,4 +1,4 @@
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 const AccountModel = require('../models/account')
 const { data, param, css } = require('jquery')
 var jwt =require('jsonwebtoken')
@@ -7,8 +7,8 @@ var saltRounds = 10;
 
 
 let addTeacher = (req,res)=>{
-    CourseModel.find(function(err,data){
-        res.render('./teacher/course_teacher',{course:data})    
+    FaculityModel.find(function(err,data){
+        res.render('./teacher/faculity_teacher',{faculity:data})    
 })
 }
 
@@ -31,7 +31,7 @@ let doAddTeacher=(req,res)=>{
                     if(err){
                         console.log(err)
                     }else{
-                        res.redirect('/course/Teacher/'+req.body.slug)
+                        res.redirect('/faculity/Teacher/'+req.body.slug)
 
                         
                     }
@@ -51,7 +51,7 @@ let deleteTeacher = (req,res)=>{
             _id :  req.params.id
         })
         .then(()=>{
-            res.redirect('/course/Teacher/'+ slug)
+            res.redirect('/faculity/Teacher/'+ slug)
         })
     })
     
@@ -63,7 +63,7 @@ let doupdate =(req,res)=>{
         _id : req.params.id
     }, req.body)
     .then(()=>{
-        res.redirect('/course/Teacher/'+ req.body.slug)
+        res.redirect('/faculity/Teacher/'+ req.body.slug)
     })
 }
 

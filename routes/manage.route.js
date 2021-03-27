@@ -1,5 +1,5 @@
 var express = require('express');
-var CourseModel = require('../models/course'); 
+var FaculityModel = require('../models/faculity'); 
 var manageRoute = express.Router();
 // let {checkAuth,checkAdmin } = require('../middleware/index')
 // const { isEmail } = require('../middleware/index');
@@ -20,7 +20,7 @@ manageRoute.get('/viewStatistical:slug', manageController.allstatistical)
 manageRoute.get('/readcontribution:id', manageController.readcontribution)
 
 //downloadfilezip
-manageRoute.get('/allcoursemanager', manageController.allcoursemanager)
+manageRoute.get('/allfaculitymanager', manageController.allfaculitymanager)
 // CRUD
 manageRoute.get('/addManager',manageController.addManager)
 manageRoute.get('/allManager',manageController.allManager)

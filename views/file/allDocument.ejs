@@ -31,7 +31,7 @@
             <div class="menu">
                 <ul>
                   <li><a href="/account/indexTeacher">Home</a></li>
-                    <li>  <a href="/course/view{{account.slug}}">View submissions</a></li>
+                    <li>  <a href="/faculity/view{{account.slug}}">View submissions</a></li>
                 </ul>
 
             </div>
@@ -55,7 +55,7 @@
                         <%if (file.status =="Pass") { %>
                         <td><a href="/download/<%= file._id %>"><%= file.nameFile %></a></td>
                         <td><%= file.status %></td>
-                        <td><a href="/course/evaluate/<%= file._id %>">View</a></td>
+                        <td><a href="/faculity/evaluate/<%= file._id %>">View</a></td>
                         <% }  %>
                     </tr>
                   <% }); %>
@@ -64,7 +64,7 @@
                         <%if (file.status2 =="Pass") { %>
                         <td><a href="/download/<%= file._id %>"><%= file.nameFile2 %></a></td>
                         <td><%= file.status2 %></td>
-                        <td><a href="/course/evaluate2nd/<%= file._id %>">View</a></td>
+                        <td><a href="/faculity/evaluate2nd/<%= file._id %>">View</a></td>
                         <% }  %>
                     </tr>
                   <% }); %>
@@ -74,7 +74,7 @@
                         <%if ((file.status =="not rate" && !file.nameFile2)||file.status =="Fail" && !file.nameFile2) { %>
                         <td><a href="/download/<%= file._id %>"><%= file.nameFile %></a></td>
                         <td><%= file.status %></td>
-                        <td><a href="/course/evaluate/<%= file._id %>">View</a></td>
+                        <td><a href="/faculity/evaluate/<%= file._id %>">View</a></td>
                         <% }  %>
                     </tr>
                   <% }); %>
@@ -85,7 +85,7 @@
                         <%if ((file.status2 =="not rate" && file.nameFile2)||(file.status2 =="Fail" && file.nameFile2)) { %>
                         <td><a href="/download/<%= file._id %>"><%= file.nameFile2 %></a></td>
                         <td><%= file.status2 %></td>
-                        <td><a href="/course/evaluate2nd/<%= file._id %>">View</a></td>
+                        <td><a href="/faculity/evaluate2nd/<%= file._id %>">View</a></td>
                         <% }  %>
                     </tr>
                   <% }); %>

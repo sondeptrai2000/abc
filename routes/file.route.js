@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 let {checkAuth } = require('../middleware/index')
 var AccountModel = require('../models/account')
 const nodemailer =  require('nodemailer');
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 
 // sơn test chuyển word sang pdf npm i docx-pdf
 // phải cài cả npm i phantomjs-prebuilt 
@@ -55,7 +55,7 @@ fileRouter.get('/',(req,res)=>{
 //last piece
 fileRouter.get('/fileSubmited',(req,res)=>{
     let email = req.cookies.email
-    CourseModel.findOne({},function(err,result){
+    FaculityModel.findOne({},function(err,result){
         console.log("data là ", result.deadline)
         fileModel.find({studentemail:email},(err,data)=>{
             if(err){

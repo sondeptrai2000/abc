@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/updateteacher.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="header">
+      <form method="post" action="./faculity/search">
+        <input placeholder="Search" aria-label="Search" name="faculityname" class="search">
+        <button type="submit" value="Search Faculity" class="buttonsearch">Search</button>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fa fa-bars"></i>
+        </label>
+        <a href="/logout"><span class="logout">&times;</span></a>
+      </form>
+
+
+    </div>
+    <div class="layout1">
+      <div class="menu">
+        <ul>
+          <li><a href="/account/indexAdmin">Home</a></li>
+          <li><a href="/faculity/allfaculity">Faculity</a></li>
+          <li><a href="/faculity/create"> Create Faculity </a></li>
+          <li><a href="/student/addStudent">Create student</a></li>
+          <li><a href="/teacher/addTeacher">Create Teacher</a></li>
+        </ul>
+
+      </div>
+      <div class="content">
+        <h2>Create Faculity</h2>
+        <div class="swap">
+        <form method="POST" action="/faculity/doCreate">
+
+          <div class="form-group">
+            <label for="faculityname">Faculity Name</label>
+            <input type="text" name="faculityname" id="faculityname">
+          </div>
+            <br>
+            <div class="form-group">
+              <label for="topic">Topic</label>
+            <input type="text" name="topic" class="topicinput">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Class</label>
+            <input type="text" name="slug" class="classinput">
+            </div>
+            <br>
+          </div>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="footer">
+    <p>@University-2021</p>
+  </div>
+
+</body>
+
+</html>

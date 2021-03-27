@@ -36,18 +36,18 @@
         <ul>
           <li><a href="/account/indexManager">Home</a></li>
           <li><a href="/manage/allfaculity">View contributions</a></li>
-          <li><a href="/manage/allcoursemanager">Download contributions</a></li>
+          <li><a href="/manage/allfaculitymanager">Download contributions</a></li>
           <li id="popupsettime">Set Time</li>
         </ul>
 
       </div>
       <div class="content">
 
-        {{#each course}}
+        {{#each faculity}}
         <div class="card">
 
 
-          <h5>{{coursename}}</h5>
+          <h5>{{faculityname}}</h5>
           <button><a href="/manage/allcontribution{{slug}}">View contributions</a></button>
           <button><a href="/manage/viewStatistical{{slug}}">View statistical</a></button>
         </div>

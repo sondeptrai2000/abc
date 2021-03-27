@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/homemanage.css">
   <link rel="stylesheet" href="/css/allfaculity.css">
-    <link rel="stylesheet" href="/css/allcoursemanage.css">
+    <link rel="stylesheet" href="/css/allfaculitymanage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script>
@@ -37,7 +37,7 @@
         <ul>
           <li><a href="/account/indexManager">Home</a></li>
           <li><a href="/manage/allfaculity">View contributions</a></li>
-          <li><a href="/manage/allcoursemanager">Download contributions</a></li>
+          <li><a href="/manage/allfaculitymanager">Download contributions</a></li>
           <li id="popupsettime">Set Time</li>
         </ul>
 
@@ -45,9 +45,9 @@
 
 
         <div class="content">
-        {{#each course}}
+        {{#each faculity}}
         <div class="card">
-          <h5>{{coursename}}</h5>
+          <h5>{{faculityname}}</h5>
 
           <button><a href="/file/lol{{slug}}">View</a></button>
         </div>

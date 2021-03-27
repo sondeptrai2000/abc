@@ -1,4 +1,4 @@
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 const AccountModel = require('../models/account')
 const { data, param, css } = require('jquery')
 var jwt =require('jsonwebtoken')

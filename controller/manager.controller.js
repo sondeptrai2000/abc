@@ -1,4 +1,4 @@
-const CourseModel = require('../models/course')
+const FaculityModel = require('../models/faculity')
 const AccountModel = require('../models/account')
 const { data, param, css } = require('jquery')
 var jwt = require('jsonwebtoken')
@@ -18,11 +18,11 @@ class manageController {
         var dateFormated = someDate.toISOString().substr(0, 10);
         //thời gian sau khi cộng 14 ngày
         let deadline2 = dateFormated + " " + time;
-        CourseModel.updateMany({}, { deadline: deadline1, deadline2: deadline2 }, function (err, data) {
+        FaculityModel.updateMany({}, { deadline: deadline1, deadline2: deadline2 }, function (err, data) {
             if (err) {
                 res.json("")
             }
-            CourseModel.find({}, function (err, data) {
+            FaculityModel.find({}, function (err, data) {
                 if (err) {
                     res.json("")
                 }
@@ -34,9 +34,9 @@ class manageController {
 
     //hiển thị tất cả các khoa
     allfaculity(req, res) {
-        CourseModel.find({})
+        FaculityModel.find({})
             .then(data => {
-                res.render('./marketingmanager/allfaculity', { course: data })
+                res.render('./marketingmanager/allfaculity', { faculity: data })
             })
             .catch(err => {
                 res.json("loi sever")
@@ -121,10 +121,10 @@ class manageController {
         })
     }
 
-    allcoursemanager(req, res) {
-        CourseModel.find({})
+    allfaculitymanager(req, res) {
+        FaculityModel.find({})
             .then(data => {
-                res.render('./marketingmanager/allcoursemanager', { course: data })
+                res.render('./marketingmanager/allfaculitymanager', { faculity: data })
             })
             .catch(err => {
                 res.json("loi sever")
