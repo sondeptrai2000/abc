@@ -20,7 +20,7 @@ body{
     width: 80%;
     height: 90vh;
 
-    margin: 5.5vh auto 0 auto ;
+    margin: 5vh auto auto auto ;
     border-radius: 20px;
     z-index: 2;
 }
@@ -152,6 +152,7 @@ td {
     text-align: center;
     bottom: 0;
     width: 100%;
+    height: 5vh;
 }
   
 .footer p {
@@ -176,29 +177,36 @@ td {
     cursor: pointer;
 }
 
-@media (max-width: 821px) {
+@media (max-width: 768px) {
  
     
     
     .layout{
         width: 100%;
-        height: 90vh;
+        height: 95vh;
     
-        margin: 0 auto 0 auto ;
+        margin: 0 auto auto auto ;
         z-index: 2;
     }
     .header{
         width: 100%;
-        height: 7vh;
+        height: 5vh;
         background-color: blueviolet;
         border-radius: 0;
     }
     .menu{
         width: 0;
-        height:83vh;
+        height:90vh;
+    }
+    .logout{
+        margin-top: -1.5vh;
+    }
+    .layout1{
+        height: 90vh;
     }
     .content{
         width: 100%;
+        height: 85vh;
     }
     .checkbtn{
         font-size: 25px;
@@ -220,7 +228,7 @@ td {
     }
     .menu ul{
 
-        height: 85vh;
+        height: 90vh;
         position: fixed;
         background-color: black;
         left: -60%;
@@ -253,6 +261,9 @@ td {
         left: 0;
     }
     .footer{
-        width: 100%;
+        height: 5vh;
+    }
+    .footer p{
+        font-size: 15px;
     }
 }
