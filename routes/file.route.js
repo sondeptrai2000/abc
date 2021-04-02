@@ -83,8 +83,7 @@ fileRouter.get('/fileSubmited',(req,res)=>{
 
 // set up mail sever
 var transporter =  nodemailer.createTransport({ 
-    host: "smtp.googlemail.com",
-    port: 465,
+    service: 'gmail'
 
     auth: {
         user: 'nguyenminhsonhandsome@gmail.com', 
@@ -92,6 +91,14 @@ var transporter =  nodemailer.createTransport({
     },
 
     });
+transporter.verify(function(error, success) {
+    // Nếu có lỗi.
+    if (error) {
+        res.json(error);
+    } else { //Nếu thành công.
+        console.log('Kết nối thành công!');
+    }
+});
 
 fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
     x = req.files[0].originalname
