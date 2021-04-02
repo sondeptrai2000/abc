@@ -32,7 +32,7 @@ img{
     transform: scale(1.1);
     cursor: pointer;
 }
-@media (max-width: 1452px) {
+@media (max-width: 768px) {
     .viewfiles{
         height: 50vh;
         width: 100%;

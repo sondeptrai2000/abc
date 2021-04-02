@@ -39,6 +39,8 @@ class guestController {
                     }
                 })
     }
+
+    
     addGuest (req,res){
         AccountModel.find(function(err,data){
             res.render('./guest/addGuest')    

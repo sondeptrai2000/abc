@@ -11,12 +11,10 @@ class manageController {
     settime(req, res, next) {
         let date = req.body.date;
         let time = req.body.time;        
-        //thời gian ban đầu
         let deadline1 = date + " " + time;
         var someDate = new Date(date);
         someDate.setDate(someDate.getDate() + 14);
         var dateFormated = someDate.toISOString().substr(0, 10);
-        //thời gian sau khi cộng 14 ngày
         let deadline2 = dateFormated + " " + time;
         FaculityModel.updateMany({}, { deadline: deadline1, deadline2: deadline2 }, function (err, data) {
             if (err) {

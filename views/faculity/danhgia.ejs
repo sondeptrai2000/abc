@@ -16,14 +16,11 @@
         <form action="/faculity/dodanhgiabaibao<%= data._id %>" method="POST">
 
             <p>You can download the file here<a href="/download/<%= data._id %>"><%= data.nameFile %></a></p>
-            <iframe src="/<%= data.filePath %>" class="viewfiles">
-                <%if (data.filePathAnh) { %>
+            <iframe src="/<%= data.filePath %>" class="viewfiles"></iframe>
+
+               <%if (data.filePathAnh) { %>
                     <img width="40px" height="40px" src="/<%= data.filePathAnh %>"/>
                 <% }  %>
-            
-            </iframe>
-
-            
             
             <div class="swap">
                 <p>Status: 

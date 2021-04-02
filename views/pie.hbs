@@ -1,0 +1,27 @@
+<form action="validate1" method="get">
+
+
+<p>Email</p>
+<input type="email" name = "username" required>
+
+
+<p>Name</p>
+<input type="text" name = "name" pattern="[a-zA-Z]+" title="Username shouldn't contain number. e.g. john" required >
+
+
+<p>Date of birth</p>
+<input type="date" name = "birthday" required>
+
+
+<p>Phone</p>
+<input type= "text" name = "Phone"  pattern="(\+84|0)\d{9,10}" minlength="8" maxlength="10" title="Phone number must not contain letters or any other characters.Phone number must be between 8-10 numbers." required>
+
+
+<p>Faculty</p>
+<input type="text" name = "faculty" pattern="[a-zA-Z]+" title="Faculty shouldn't contain number. e.g. Electronic technology" required >
+
+
+<p>password</p>
+<input type="password" name="password"title="Password needs to be at least 8 characters without special characters (/,?, Etc)" minlength="8" pattern="[a-zA-Z0-9]+"  required>
+<input type= "submit" >
+</form>

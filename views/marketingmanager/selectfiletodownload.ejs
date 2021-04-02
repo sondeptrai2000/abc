@@ -37,11 +37,12 @@
                     <li><a href="/manage/allfaculitymanager">Download contributions</a></li>
                 </ul>
 
-            </div>
+            </div>  
             <div class="content">
                   <input type="button" class="btn" onclick='selectAll()' value="Select All"/>
                   <input type="button" class="btn" onclick='UnSelectAll()' value="Unselect All"/><br>
   <form action ="/file/abc" method="post" name="">
+    <input type="hidden" name="hobby" value="."/> <label></label> 
     <% data.forEach(function(data) { %>
           <%if (data.status =="Pass" && !data.nameFile2) { %> 
             <div class="swap">

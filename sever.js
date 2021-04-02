@@ -90,6 +90,15 @@ app.get('/download2/:id',(req,res)=>{
     })
   })
 
+
+  app.get('/validate',(req,res)=>{
+   res.render("pie")
+  })
+
+  app.get('/validate1',(req,res)=>{
+    res.json('ok')
+   })
+
 //tiến hành cài đặt cho chat box
 const http = require('http');
 const socketio = require('socket.io');
