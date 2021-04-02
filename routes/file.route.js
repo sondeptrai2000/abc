@@ -123,7 +123,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
                 let email = req.cookies.email
                 var content = 'You have just uploaded an article to the system. Name: ' + x;
                 var mainOptions = { 
-                    from: 'NQH-Test nodemailer',
+                    from: 'nguyenminhsonhandsome@gmail.com',
                     to: email,  
                     subject: 'Notification',
                     text: content 
@@ -140,7 +140,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
                 },function(err, result){
                     var content = email + 'just uploaded an article to the system. Name: ' + x;
                     var mainOptions2 = {
-                    from: 'NQH-Test nodemailer',
+                    from: 'nguyenminhsonhandsome@gmail.com',
                     to: result.email,  
                     subject: 'new post',
                     text: content 
