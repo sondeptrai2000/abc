@@ -107,7 +107,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
     
         transporter.verify(function(error, success) {
         if (error) {
-          res.send("Loi vl");
+          res.send(error);
         } else {
           res.send("Server is ready to take our messages");
         }
