@@ -93,7 +93,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
         secure: true,
         auth: {
             user: 'sonhandsomeabc@gmail.com', 
-            pass: 'minhson123a' 
+            pass: 'minhson@1' 
         },
         tls: {
             // do not fail on invalid certs
