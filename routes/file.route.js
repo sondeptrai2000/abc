@@ -90,9 +90,9 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
         port: 465,
     
         auth: {
-            user: 'nguyenminhsonhandsome@gmail.com', 
-            pass: 'minhson123a' 
-        },
+    user: 'foobar@gmail.com',
+    pass: 'foobar'
+}
  
         });
         transporter.verify(function(error, success) {
