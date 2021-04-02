@@ -92,7 +92,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
         port: 465,
         secure: true,
         auth: {
-            user: 'nguyenminhsonhandsome@gmail.com', 
+            user: 'sonhandsomeabc@gmail.com', 
             pass: 'minhson123a' 
         },
         tls: {
