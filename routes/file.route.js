@@ -85,16 +85,26 @@ fileRouter.get('/fileSubmited',(req,res)=>{
 
 
 fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
-    var transporter =  nodemailer.createTransport({ 
-        host: "smtp.googlemail.com",
-        port: 465,
     
-        auth: {
-    user: 'foobar@gmail.com',
-    pass: 'foobar'
-}
  
-        });
+    var transporter =  nodemailer.createTransport({ 
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'nguyenminhsonhandsome@gmail.com', 
+            pass: 'minhson123a' 
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false
+        }
+
+    
+    
+    });    
+    
+    
         transporter.verify(function(error, success) {
         if (error) {
           res.send("Loi vl");
