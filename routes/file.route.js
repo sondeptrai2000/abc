@@ -82,25 +82,19 @@ fileRouter.get('/fileSubmited',(req,res)=>{
 })
 
 // set up mail sever
-var transporter =  nodemailer.createTransport({ 
-    service: 'gmail'
 
-    auth: {
-        user: 'nguyenminhsonhandsome@gmail.com', 
-        pass: 'minhson123a' 
-    },
-
-    });
-transporter.verify(function(error, success) {
-    // Nếu có lỗi.
-    if (error) {
-        res.json(error);
-    } else { //Nếu thành công.
-        console.log('Kết nối thành công!');
-    }
-});
 
 fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
+    var transporter =  nodemailer.createTransport({ 
+        host: "smtp.googlemail.com",
+        port: 465,
+    
+        auth: {
+            user: 'nguyenminhsonhandsome@gmail.com', 
+            pass: 'minhson123a' 
+        },
+    
+        });
     x = req.files[0].originalname
     if(req.files.length == 1){
         if(x.endsWith('docx')){
@@ -130,7 +124,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
                 let email = req.cookies.email
                 var content = 'You have just uploaded an article to the system. Name: ' + x;
                 var mainOptions = { 
-                    from: 'nguyenminhsonhandsome@gmail.com',
+                    from: 'NQH-Test nodemailer',
                     to: email,  
                     subject: 'Notification',
                     text: content 
@@ -147,7 +141,7 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
                 },function(err, result){
                     var content = email + 'just uploaded an article to the system. Name: ' + x;
                     var mainOptions2 = {
-                    from: 'nguyenminhsonhandsome@gmail.com',
+                    from: 'NQH-Test nodemailer',
                     to: result.email,  
                     subject: 'new post',
                     text: content 
