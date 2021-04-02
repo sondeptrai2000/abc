@@ -83,9 +83,8 @@ fileRouter.get('/fileSubmited',(req,res)=>{
 
 // set up mail sever
 var transporter =  nodemailer.createTransport({ 
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
+    host: "smtp.googlemail.com",
+    port: 465,
 
     auth: {
         user: 'nguyenminhsonhandsome@gmail.com', 
