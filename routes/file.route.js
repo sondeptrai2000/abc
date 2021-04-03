@@ -92,149 +92,22 @@ fileRouter.post('/upload',upload.array('filePath',2),(req,res)=>{
         port: 465,
         secure: true,
         auth: {
-            user: 'sonhandsomeabc@gmail.com', 
-            pass: 'minhson@1' 
+            user: 'fptedunotification@gmail.com', 
+            pass: 'son@1234' 
         },
         tls: {
             // do not fail on invalid certs
             rejectUnauthorized: false
         }    
     });    
-    x = req.files[0].originalname
-    if(req.files.length == 1){
-        if(x.endsWith('docx')){
-            xdoc ='uploads/'+  req.files[0].originalname
-            var x1 = './public/' + xdoc
-            var xx = x1.split('.');
-            filePath1 = '.' + xx[1] + '.pdf'
-            var filePath = xdoc.split('.');
-            filePath = filePath[0] + '.pdf'
-            docxConverter(x1,filePath1,function(err,result){
-                if(err){
-                  console.log(err);
-                }
-            });
-            let email = req.cookies.email
-            var temp = new fileModel({
-                filePathdoc: xdoc,
-                filePath:filePath,
-                nameFile : x,
-                studentemail: email,
-                slug: req.cookies.slug,
-            })
-            temp.save((err,data)=>{
-                if(err){
-                    console.log(err)
-                }
-                let email = req.cookies.email
-                var content = 'You have just uploaded an article to the system. Name: ' + x;
-                var mainOptions = { 
-                    from: 'NQH-Test nodemailer',
-                    to: email,  
-                    subject: 'Notification',
-                    text: content 
-                }
-                transporter.sendMail(mainOptions, function(err, info){
-                    if (err) {
-                        console.log(err);
-                    } 
-                });
-                let slug = req.cookies.slug
-                AccountModel.findOne({
-                    role: "teacher",
-                    slug: slug
-                },function(err, result){
-                    var content = email + 'just uploaded an article to the system. Name: ' + x;
-                    var mainOptions2 = {
-                    from: 'NQH-Test nodemailer',
-                    to: result.email,  
-                    subject: 'new post',
-                    text: content 
-                }
-                transporter.sendMail(mainOptions2, function(err, info){
-                    if (err) {
-                        console.log(err);
-                    } 
-                });
-                })
-            res.redirect('/file')
-            })
-        }else{
-            res.send('<script>alert("Only file formats docx, img, png, gif can be uploaded. You must upload at least 1 docx file and 1 image file (optional)");window.location.href = "/file";</script>');
-        }           
-    }else{
-        y = req.files[1].originalname
-        if((x.endsWith('png')&& y.endsWith('docx'))||(x.endsWith('jpg')&& y.endsWith('docx'))||(x.endsWith('gif')&& y.endsWith('docx'))||(y.endsWith('jpg')&& x.endsWith('docx'))||(y.endsWith('gif')&& x.endsWith('docx'))||(y.endsWith('png')&& x.endsWith('docx'))){
-            for(var i = 0;i<2;i++){
-                if(req.files[i].originalname.endsWith('png')||req.files[i].originalname.endsWith('jpg')||req.files[i].originalname.endsWith('gif')){
-                    imgpath = 'uploads/'+  req.files[i].originalname
-                    console.log(imgpath)
-                }
-                else if(req.files[i].originalname.endsWith('docx')){
-                    y = req.files[i].originalname
-                    x ='uploads/'+  req.files[i].originalname
-                }
-            }  
-            var x1 = './public/' + x
-            var xx = x1.split('.');
-            filePath1 = '.' + xx[1] + '.pdf'
-            var filePath = x.split('.');
-            filePath = filePath[0] + '.pdf'
-            docxConverter(x1,filePath1,function(err,result){
-                if(err){
-                    console.log(err);
-                }
-            }); 
-            let email = req.cookies.email
-            var temp = new fileModel({
-                filePathdoc: x,
-                filePath:filePath,
-                nameFile : y,
-                studentemail: email,
-                slug: req.cookies.slug,
-                filePathAnh:imgpath,
-            })
-            temp.save((err,data)=>{
-                if(err){
-                    console.log(err)
-                }
-                let email = req.cookies.email
-                var content = 'You have just uploaded an article to the system. Name: ' + x;
-                var mainOptions = { 
-                    from: 'NQH-Test nodemailer',
-                    to: email,  
-                    subject: 'Test Nodemailer',
-                    text: content 
-                }
-                transporter.sendMail(mainOptions, function(err, info){                     
-                    if (err) {
-                        console.log(err);
-                    } 
-                });
-                let slug = req.cookies.slug
-                AccountModel.findOne({
-                    role: "teacher",
-                    slug: slug
-                },function(err, result){
-                    var content = email + 'just uploaded an article to the system. Name: ' + x;
-                    var mainOptions2 = { 
-                    from: 'NQH-Test nodemailer',
-                    to: result.email,  
-                    subject: 'bài đăng mới',
-                    text: content
-                }
-                transporter.sendMail(mainOptions2, function(err, info){
-                    if (err) {
-                        console.log(err);
-                    } 
-                });
-            })
-            res.redirect('/file')
-            }) 
-        }else{
-            res.send('<script>alert("Only file formats docx, img, png, gif can be uploaded. You must upload at least 1 docx file and 1 image file (optional)");window.location.href = "/file";</script>');      
-        }
-    }   
+    transporter.verify(function(error, success) {
+  if (error) {
+    res.json(error);
+  } else {
+    res.json("MAILER CONNECTION VERIFIED");
+  }
+});
+      
 })
     
 
